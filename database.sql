@@ -48,4 +48,5 @@ VALUES
     ('Vacation'),
     ('Sick'),
     ('FMLA'),
-    ('Unexcused Non-Sick');
+    ('Unexcused Non-Sick'
+    );
