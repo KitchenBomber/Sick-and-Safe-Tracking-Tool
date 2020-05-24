@@ -7,29 +7,45 @@
 
 
 --Database: "sick_and_safe"
-
-
 CREATE TABLE "user"
 (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL,
-    "access" INT
+    "access" INT,
+    "supervisor_id" INT,
+    "admin_id" INT DEFAULT '1',
+    "hire_date" DATE DEFAULT CURRENT_DATE,
+    "dflt_hours" INT DEFAULT '8',
+    "dflt_mpls" BOOLEAN DEFAULT 'true',
+    "dflt_absence" INT DEFAULT '20',
+    "last_login" DATE DEFAULT CURRENT_DATE,
+    "notes" VARCHAR (500)
 );
 
-CREATE TABLE "employee_profile"
+
+CREATE TABLE "employee_time"
 (
     "id" SERIAL PRIMARY KEY,
     "user_id" INT,
-    "full_name" varchar(50),
-    "supervisor_id" INT,
-    "admin_id" INT,
-    "dflt_start" date,
-    "dflt_hours" INT,
-    "dlft_mpls" boolean,
-    "dflt_absence" int,
-    "last_login" DATE,
-    "failed_since_last" int,
-    "notes" varchar (250)
+    "start" DATE,
+    "hours" INT,
+    "payroll_code" INT DEFAULT '1',
+    "mpls" BOOLEAN
 );
---when a "user" is created I also need to make it populate this table with "user"."id" = "employee_pprofile"."user.id"
+
+CREATE TABLE "payroll_codes"
+(
+    "id" SERIAL PRIMARY KEY,
+    "pay_class" VARCHAR (20)
+);
+
+
+INSERT INTO "payroll_codes"
+    ("pay_class")
+VALUES
+    ('Regular'),
+    ('Vacation'),
+    ('Sick'),
+    ('FMLA'),
+    ('Unexcused Non-Sick');
