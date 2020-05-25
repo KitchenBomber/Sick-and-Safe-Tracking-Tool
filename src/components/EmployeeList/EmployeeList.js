@@ -14,8 +14,24 @@ export class EmployeeList extends Component {
             <div>
                 <h3>Hello from EmployeeList</h3>
                 <p>Current User: {JSON.stringify(this.props.user)}</p>
-                <p>User Employees: {JSON.stringify(this.props.employees)}</p>
-                <EmployeeItem/>
+                {/* <p>User Employees: {JSON.stringify(this.props.employees)}</p> */}
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Hire Date</td>
+                            <td>Supervisor</td>
+                            <td>Start Time</td>
+                            <td>Shift Hours</td>
+                            <td>Location</td>
+                            <td>Absence Limit</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.employees.map(employeeItem =>
+                            <EmployeeItem key={employeeItem.id} employeeItem={employeeItem}/>
+                            )}
+                    </tbody>
+                </table>
             </div>
         )
     }

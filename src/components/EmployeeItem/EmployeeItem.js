@@ -4,9 +4,14 @@ import { connect } from 'react-redux';
 export class EmployeeItem extends Component {
     render() {
         return (
-            <div>
-                <h3>Hello from EmployeeItem</h3>
-            </div>
+            <tr>
+                <td>{this.props.employeeItem.hire_date}</td>
+                <td>Supervisor</td>
+                <td>Start Time</td>
+                <td>Shift Hours</td>
+                <td>Location</td>
+                <td>Absence Limit</td>
+            </tr>
         )
     }
 }
