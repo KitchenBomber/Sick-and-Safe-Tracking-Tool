@@ -6,11 +6,9 @@ export class EmployeeItem extends Component {
         return (
             <tr>
                 <td>{this.props.employeeItem.hire_date}</td>
-                <td>Supervisor</td>
-                <td>Start Time</td>
-                <td>Shift Hours</td>
-                <td>Location</td>
-                <td>Absence Limit</td>
+                <td>{this.props.employeeItem.dflt_hours}</td>
+                <td>{this.props.employeeItem.dflt_mpls}</td>
+                <td>{this.props.employeeItem.dflt_absence}</td>
             </tr>
         )
     }

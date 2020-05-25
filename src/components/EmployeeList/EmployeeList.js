@@ -19,8 +19,6 @@ export class EmployeeList extends Component {
                     <thead>
                         <tr>
                             <td>Hire Date</td>
-                            <td>Supervisor</td>
-                            <td>Start Time</td>
                             <td>Shift Hours</td>
                             <td>Location</td>
                             <td>Absence Limit</td>
