@@ -1,6 +1,6 @@
 const rejectNonAdmin = (req, res, next) => {
     // check if logged in
-    if (req.isAuthenticated() && req.user.is_admin) {
+    if (req.isAuthenticated() && req.user.access > 8) {
         // They were authenticated! User may do the next thing
         // Now we also are requiring Authorization
         next();

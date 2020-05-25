@@ -1,6 +1,6 @@
 const rejectUnauthorized = (req, res, next) => {
     // check if logged in
-    if (req.isAuthenticated() && req.user.admin) {
+    if (req.isAuthenticated() && req.user.access > 4) {
         // They were authenticated! User may do the next thing
         // Now we also are requiring Authorization
         next();
