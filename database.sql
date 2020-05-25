@@ -1,10 +1,6 @@
 
 -- USER is a reserved keyword with Postgres 
--- "prime-app" is what's set up
 -- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
-
 
 --Database: "sick_and_safe"
 CREATE TABLE "user"
@@ -15,14 +11,14 @@ CREATE TABLE "user"
     "access" INT,
     "supervisor_id" INT,
     "admin_id" INT DEFAULT '1',
-    "hire_date" DATE DEFAULT CURRENT_DATE,
+    "hire_date" DATE DEFAULT DATE,
     "dflt_hours" INT DEFAULT '8',
     "dflt_mpls" BOOLEAN DEFAULT 'true',
     "dflt_absence" INT DEFAULT '20',
-    "last_login" DATE DEFAULT CURRENT_DATE,
+    "last_login" DATE DEFAULT DATE,
     "notes" VARCHAR (500)
 );
-
+-- lines 14 and 18 were actually entered into the database as CURRENT_DATE not DATE but VS Code kept throwing up an angry red error
 
 CREATE TABLE "employee_time"
 (

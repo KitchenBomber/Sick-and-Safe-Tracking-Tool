@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 export class EmployeeItem extends Component {
     render() {
@@ -10,7 +11,11 @@ export class EmployeeItem extends Component {
     }
 }
 
-export default EmployeeItem
+const mapStateToProps = state => ({
+    user: state.user,
+});
+
+export default connect(mapStateToProps)(EmployeeItem);
 
 //When viewed by an employee this will display recent time entries, current time balances and a link to the graphs
 //When viewed by a supervisor the option to edit or delete time entries should also be available
