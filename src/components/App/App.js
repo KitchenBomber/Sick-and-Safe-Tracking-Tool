@@ -16,10 +16,13 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
-import SupervisorList from '../SupervisorList/SupervisorList';
 import EmployeeList from '../EmployeeList/EmployeeList';
+import HistoryList from '../HistoryList/HistoryList';
+import SupervisorItem from '../SupervisorItem/SupervisorItem';
+
+import SupervisorList from '../SupervisorList/SupervisorList';
 import AdminItem from '../AdminItem/AdminItem'; 
-//this route has no buttons to it since creating a higher authorization isn't within my base scope. I just want to be able to manually navigate there.
+//these routes have no buttons to them since creating a higher authorization isn't within my base scope. I just want to be able to manually navigate there.
 
 import './App.css';
 
@@ -59,20 +62,27 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
+            
+            <ProtectedRoute
+              exact
+              path="/administrator"
+              component={AdminItem}
+            />
             <ProtectedRoute
               exact
               path="/supervisor"
-              component={SupervisorList}
-              />
+              component={SupervisorItem}
+            />
               <ProtectedRoute
               exact
               path="/employee"
               component={EmployeeList}
               />
+              
               <ProtectedRoute
               exact
-              path="/administrator"
-              component={AdminItem}
+              path="/history"
+              component={HistoryList}
               />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

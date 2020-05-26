@@ -27,7 +27,11 @@ CREATE TABLE "employee_time"
     "start" DATE,
     "hours" INT,
     "payroll_code" INT DEFAULT '1',
-    "mpls" BOOLEAN
+    "mpls" BOOLEAN,
+    "previous_year_carryover" INT,
+    "sick_accrual_impact" INT,
+    "sick_balance_impact" INT,
+    "chargeable_impact" INT
 );
 
 CREATE TABLE "payroll_codes"

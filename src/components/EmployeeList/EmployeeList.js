@@ -18,13 +18,24 @@ export class EmployeeList extends Component {
                 <table>
                     <thead>
                         <tr>
+                            <td>Name</td>
                             <td>Hire Date</td>
                             <td>Shift Hours</td>
                             <td>Location</td>
                             <td>Absence Limit</td>
+                            <td>Add/Edit</td>
+                            <td>Visualize</td>
                         </tr>
                     </thead>
+                    {/* will probably add conditional here to show a supervisor's own information */}
                     <tbody>
+                        <tr>
+                            <td>{this.props.user.username}</td>
+                            <td>{this.props.user.hire_date}</td>
+                            <td>{this.props.user.dflt_hours}</td>
+                            <td><p>{this.props.user.dflt_mpls ? 'MPLS' : 'NON-MPLS'}</p></td>
+                            <td>{this.props.user.dflt_absence}</td>
+                        </tr>
                         {this.props.employees.map(employeeItem =>
                             <EmployeeItem key={employeeItem.id} employeeItem={employeeItem}/>
                             )}
