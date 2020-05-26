@@ -28,7 +28,7 @@ const Nav = (props) => (
            Supervisor
           </Link>
 
-          <Link className="nav-link" to="employee">
+          <Link className="nav-link" to="/employee">
             Employee
           </Link>
         </>

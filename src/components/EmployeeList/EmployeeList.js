@@ -27,7 +27,6 @@ export class EmployeeList extends Component {
                             <td>Visualize</td>
                         </tr>
                     </thead>
-                    {/* will probably add conditional here to show a supervisor's own information */}
                     <tbody>
                         <tr>
                             <td>{this.props.user.username}</td>
