@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 export class HistoryItem extends Component {
+
     render() {
         return (
             <div>
                <h3>HistoryItem</h3> 
+                <p>{JSON.stringify(this.props.clicked)}</p>
             </div>
         )
     }
@@ -13,7 +15,7 @@ export class HistoryItem extends Component {
 
 
 const mapStateToProps = state => ({
-    errors: state.errors,
+    clicked: state.clicked
 });
 
 export default connect(mapStateToProps)(HistoryItem);

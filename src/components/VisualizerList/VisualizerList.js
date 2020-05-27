@@ -7,6 +7,7 @@ export class VisualizerList extends Component {
         return (
             <div>
                 <h3>In VisualizerList</h3>
+                <p>{JSON.stringify(this.props.clicked)}</p>
                 <VisualizerItem/>
             </div>
         )
@@ -14,7 +15,7 @@ export class VisualizerList extends Component {
 }
 
 const mapStateToProps = state => ({
-    errors: state.errors,
+    clicked: state.clicked
 });
 
 export default connect(mapStateToProps)(VisualizerList);

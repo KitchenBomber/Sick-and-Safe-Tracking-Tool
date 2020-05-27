@@ -6,13 +6,14 @@ export class VisualizerItem extends Component {
         return (
             <div>
                 <h3>VisualizerItem</h3>
+                <p>{JSON.stringify(this.props.clicked)}</p>
             </div>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    errors: state.errors,
+    clicked: state.clicked
 });
 
 export default connect(mapStateToProps)(VisualizerItem);

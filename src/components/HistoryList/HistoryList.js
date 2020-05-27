@@ -8,17 +8,15 @@ export class HistoryList extends Component {
         return (
             <div>
                 <h3>HistoryList</h3>
-                <p>{JSON.stringify(this.props)}</p>
-                <table>
-                    
-                </table>
+                <p>{JSON.stringify(this.props.clicked)}</p>
+               
                 <HistoryItem/>
             </div>
         )
     }
 }
 const mapStateToProps = state => ({
-    errors: state.errors,
+    clicked: state.clicked
 });
 
 export default connect(mapStateToProps)(HistoryList);
