@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
     console.log('req.user:', req.user);
-    const queryText = `SELECT * FROM "user" WHERE "supervisor_id" = $1;`
+    const queryText = `SELECT * FROM "user" WHERE "supervisor_id" = $1 OR "id" = $1;`
     pool.query(queryText, [req.user.id])
     .then(results => res.send(results.rows))
     .catch(error => {

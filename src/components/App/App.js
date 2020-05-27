@@ -85,16 +85,15 @@ class App extends Component {
               path="/employee"
               component={EmployeeList}
             />
-
             <ProtectedRoute
               exact
               path="/history"
               component={HistoryList}
             />
             <ProtectedRoute
-            exact
-            path="/visualizer"
-            Component={VisualizerList}
+              exact
+              path="/visualizer"
+              Component={VisualizerList}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
