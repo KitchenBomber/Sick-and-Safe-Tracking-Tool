@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import VisualizerItem from '../VisualizerItem/VisualizerItem';
 
 export class VisualizerList extends Component {
     render() {
         return (
             <div>
                 <h3>VisualizerList</h3>
+                <VisualizerItem/>
             </div>
         )
     }

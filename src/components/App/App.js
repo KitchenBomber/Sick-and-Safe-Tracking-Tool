@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   HashRouter as Router,
   Route,
@@ -6,7 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -19,16 +19,17 @@ import InfoPage from '../InfoPage/InfoPage';
 import EmployeeList from '../EmployeeList/EmployeeList';
 import HistoryList from '../HistoryList/HistoryList';
 import SupervisorItem from '../SupervisorItem/SupervisorItem';
+import VisualizerList from '../VisualizerList/VisualizerList';
 
-import SupervisorList from '../SupervisorList/SupervisorList';
-import AdminItem from '../AdminItem/AdminItem'; 
-//these routes have no buttons to them since creating a higher authorization isn't within my base scope. I just want to be able to manually navigate there.
+// import SupervisorList from '../SupervisorList/SupervisorList';
+// import AdminItem from '../AdminItem/AdminItem'; 
+//these may be needed for administrative operations but aren't part of base mode.
 
 import './App.css';
 
 class App extends Component {
-  componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_USER' })
   }
 
   render() {
@@ -62,35 +63,47 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
-            
-            <ProtectedRoute
+
+            {/* <ProtectedRoute
               exact
               path="/administrator"
               component={AdminItem}
             />
             <ProtectedRoute
+            exact
+            path="/supervisors"
+            component={SupervisorList}
+            /> */}
+            {/* these may be needed for administrative operations but aren't part of base mode. */}
+            <ProtectedRoute
               exact
               path="/supervisor"
               component={SupervisorItem}
             />
-              <ProtectedRoute
+            <ProtectedRoute
               exact
               path="/employee"
               component={EmployeeList}
-              />
-              
-              <ProtectedRoute
+            />
+
+            <ProtectedRoute
               exact
               path="/history"
               component={HistoryList}
-              />
+            />
+            <ProtectedRoute
+            exact
+            path="/visualizer"
+            Component={VisualizerList}
+            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
           <Footer />
         </div>
       </Router>
-  )}
+    )
+  }
 }
 
 export default connect()(App);

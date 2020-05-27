@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export class EmployeeItem extends Component {
 
@@ -14,6 +15,8 @@ export class EmployeeItem extends Component {
                 <td>{this.props.employeeItem.dflt_hours}</td>
                 <td><p>{this.props.employeeItem.dflt_mpls ? 'MPLS' : 'NON-MPLS'}</p></td>
                 <td>{this.props.employeeItem.dflt_absence}</td>
+                <td><Link to="/history"><button>History</button></Link></td>
+                <td><Link to="/visualizer"><button>Visualize</button></Link></td>
             </tr>
         )
     }

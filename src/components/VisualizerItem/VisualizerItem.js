@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 
 export class VisualizerItem extends Component {
     render() {
@@ -10,4 +11,8 @@ export class VisualizerItem extends Component {
     }
 }
 
-export default VisualizerItem
+const mapStateToProps = state => ({
+    errors: state.errors,
+});
+
+export default connect(mapStateToProps)(VisualizerItem);
