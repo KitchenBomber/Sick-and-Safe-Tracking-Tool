@@ -28,13 +28,6 @@ export class EmployeeList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>{this.props.user.username}</td>
-                            <td>{this.props.user.hire_date}</td>
-                            <td>{this.props.user.dflt_hours}</td>
-                            <td><p>{this.props.user.dflt_mpls ? 'MPLS' : 'NON-MPLS'}</p></td>
-                            <td>{this.props.user.dflt_absence}</td>
-                        </tr>
                         {this.props.employees.map(employeeItem =>
                             <EmployeeItem key={employeeItem.id} employeeItem={employeeItem}/>
                             )}

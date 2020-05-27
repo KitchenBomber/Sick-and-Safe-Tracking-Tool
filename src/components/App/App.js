@@ -93,7 +93,7 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/visualizer"
-              Component={VisualizerList}
+              component={VisualizerList}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

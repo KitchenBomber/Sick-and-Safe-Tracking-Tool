@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 
 export class EmployeeItem extends Component {
 
-
+handleClick = () => {
+    console.log("in handleClick", this.props.employeeItem.id);
+    this.props.dispatch({type: "FETCH_HOURS", payload: this.props.employeeItem});
+    this.props.dispatch({ type: "RECORD_CLICK", payload: this.props.employeeItem});
+}
 
 
     render() {
@@ -15,8 +19,8 @@ export class EmployeeItem extends Component {
                 <td>{this.props.employeeItem.dflt_hours}</td>
                 <td><p>{this.props.employeeItem.dflt_mpls ? 'MPLS' : 'NON-MPLS'}</p></td>
                 <td>{this.props.employeeItem.dflt_absence}</td>
-                <td><Link to="/history"><button>History</button></Link></td>
-                <td><Link to="/visualizer"><button>Visualize</button></Link></td>
+                <td><Link to="/history" onClick={this.handleClick}> <button>History</button></Link></td>
+                <td><Link to="/visualizer" onClick={this.handleClick}><button>Visualize</button></Link></td>
             </tr>
         )
     }
