@@ -18,13 +18,13 @@ export class EmployeeList extends Component {
                 <table>
                     <thead>
                         <tr>
-                            <td>Name</td>
-                            <td>Hire Date</td>
-                            <td>Shift Hours</td>
-                            <td>Location</td>
-                            <td>Absence Limit</td>
-                            <td>Add/Edit</td>
-                            <td>Visualize</td>
+                            <th>Name</th>
+                            <th>Hire Date</th>
+                            <th>Shift Hours</th>
+                            <th>Location</th>
+                            <th>Absence Limit</th>
+                            <th>Add/Edit</th>
+                            <th>Visualize</th>
                         </tr>
                     </thead>
                     <tbody>

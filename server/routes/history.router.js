@@ -5,15 +5,15 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-    console.log('req.clicked', req.body);
-    // const queryText  = `SELECT * FROM "employee_time" WHERE "user_id" = $1`
-    //  pool.query(queryText, [req.clicked.id])
-    //  .then(results => res.send(results.rows))
-    //  .catch(error => {
-    //      console.log('Error retrieving Hours', error);
-    //      res.sendStatus(500);
-    //  })
+router.get('/:id', (req, res) => {
+    console.log('req.clicked', req.params.id);
+    const queryText  = `SELECT * FROM "employee_time" WHERE "user_id" = $1 ORDER BY "start" DESC;`;
+     pool.query(queryText, [req.params.id])
+     .then(results => res.send(results.rows))
+     .catch(error => {
+         console.log('Error retrieving Hours', error);
+         res.sendStatus(500);
+     })
     
 });
 
