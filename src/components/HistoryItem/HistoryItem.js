@@ -8,6 +8,7 @@ export class HistoryItem extends Component {
             <div>
                <h3>HistoryItem</h3> 
                 <p>{JSON.stringify(this.props.clicked)}</p>
+                <p>{JSON.stringify(this.props.history)}</p>
             </div>
         )
     }
@@ -15,7 +16,8 @@ export class HistoryItem extends Component {
 
 
 const mapStateToProps = state => ({
-    clicked: state.clicked
+    clicked: state.clicked,
+    history: state.history
 });
 
 export default connect(mapStateToProps)(HistoryItem);

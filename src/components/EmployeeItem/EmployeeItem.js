@@ -6,8 +6,9 @@ export class EmployeeItem extends Component {
 
 handleClick = () => {
     console.log("in handleClick", this.props.employeeItem.id);
-    this.props.dispatch({type: "FETCH_HOURS", payload: this.props.employeeItem});
-    this.props.dispatch({ type: "RECORD_CLICK", payload: this.props.employeeItem});
+    this.props.dispatch({ type: "RECORD_CLICK", payload: this.props.employeeItem });
+    
+    
 }
 
 

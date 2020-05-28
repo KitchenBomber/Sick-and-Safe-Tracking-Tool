@@ -12,12 +12,9 @@ router.get('/', (req, res) => {
     .then(results => res.send(results.rows))
     .catch(error => {
         console.log('Error retrieving Employees', error);
-        res.sendStatus(500);
-        
+        res.sendStatus(500);       
     })
     
-
-
 });
 
 /**

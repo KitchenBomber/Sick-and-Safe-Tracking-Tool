@@ -1,18 +1,16 @@
 import { takeLatest } from 'redux-saga/effects';
-import { connect } from 'react-redux';
+import LogOutButton from '../../components/LogOutButton/LogOutButton';
 
-function* clickedRecorder () {
-    console.log( 'in clickedRecorder' );
-    
+function* recordClick(){
+
 }
 
-
-
-
 function* clickedSaga () {
-    yield takeLatest('RECORD_CLICK', clickedRecorder);
+    yield takeLatest('RECORD_CLICK', recordClick);
 }
 
 export default clickedSaga;
+
+//this Saga is taking the click event from the EmployeeItem selected and recording it to state so that it's default values can be used in the History Components.
 
 

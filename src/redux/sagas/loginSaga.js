@@ -54,6 +54,7 @@ function* logoutUser(action) {
     // the client-side code know the user is logged out
     yield put({ type: 'UNSET_USER' });
     yield put({ type: 'UNSET_EMPLOYEES' });
+    yield put({ type: 'UN_CLICK'});
 
   } catch (error) {
     console.log('Error with user logout:', error);

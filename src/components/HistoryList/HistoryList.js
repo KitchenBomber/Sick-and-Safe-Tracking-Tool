@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import HistoryItem from '../HistoryItem/HistoryItem';
 
 export class HistoryList extends Component {
-
+componentDidMount(){
+    this.props.dispatch({ type: "FETCH_HOURS", payload: this.props.clicked });
+}
     render() {
         return (
             <div>
