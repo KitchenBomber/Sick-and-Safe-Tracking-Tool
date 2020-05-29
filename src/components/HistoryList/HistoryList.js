@@ -31,6 +31,7 @@ export class HistoryList extends Component {
                         <th>Pay Code</th>
                         <th>In Minneapolis</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,7 +39,7 @@ export class HistoryList extends Component {
                         <HistoryItem key={historyItem.id} historyItem={historyItem} />)}
                 </tbody>
             </table>
-            <p>{JSON.stringify(this.props.history)}</p>
+            {/* <p>{JSON.stringify(this.props.history)}</p> */}
 
 
         </div >

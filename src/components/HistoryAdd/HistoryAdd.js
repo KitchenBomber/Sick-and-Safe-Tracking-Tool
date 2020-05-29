@@ -8,6 +8,7 @@ export class HistoryAdd extends Component {
         let selectedEmployee = this.props.clicked;
         console.log("in HistoryAdd CDM", selectedEmployee);
         this.setState({
+            id: selectedEmployee.id,
             user_id: selectedEmployee.id,
             start: "",
             hours: selectedEmployee.dflt_hours,

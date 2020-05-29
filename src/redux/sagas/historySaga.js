@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
+// import { connect } from 'react-redux';
 
 // worker Saga: will be fired on "FETCH_HOURS" actions
 function* fetchHours(action) {
@@ -19,10 +20,11 @@ function* fetchHours(action) {
 }
 
 function* sendDay(action){
+
     console.log("in sendDay", action.payload );
     try {
         yield axios.post('/api/history', action.payload);
-        yield put ({ type: 'FETCH_HOURS', user.id });
+        yield put ({ type: 'FETCH_HOURS', payload: action.payload});
     }catch(error){
         console.log(error);
         
@@ -35,3 +37,9 @@ function* historySaga() {
 }
 
 export default historySaga;
+// const mapStateToProps = state => ({
+//     clicked: state.user,
+// });
+
+// // this allows us to use <App /> in index.js
+// export default connect(mapStateToProps)(historySaga);
