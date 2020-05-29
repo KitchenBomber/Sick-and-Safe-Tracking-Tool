@@ -3,6 +3,34 @@ import { connect } from 'react-redux';
 
 export class HistoryAdd extends Component {
 
+    componentDidMount() {
+        
+        let selectedEmployee = this.props.clicked;
+        console.log("in HistoryAdd CDM", selectedEmployee);
+        this.setState({
+            user_id: selectedEmployee.id,
+            start: "",
+            hours: selectedEmployee.dflt_hours,
+            payroll_code: "1",
+            mpls: selectedEmployee.dflt_mpls
+        })
+    }//this sets the initial state, may not work when i scale it up to 5 entries at a time.
+
+    handleChange = (event) => {
+        const value = event.target.value;
+        console.log('in handleChange', value);
+        this.setState({
+            ...this.state,
+            [event.target.name]: value
+        })
+        console.log(this.state);
+    }
+
+handleClick = () => {
+    console.log(this.state);
+    this.props.dispatch({type: 'ADD_DAY', payload: this.state});
+
+}
 
     render() {
         return (
@@ -21,19 +49,25 @@ export class HistoryAdd extends Component {
                     </thead>
                     <tbody>
                         <tr>
-                        <td><input type="date"></input></td>
-                        <td><input type="number" defaultValue={this.props.clicked.dflt_hours}></input></td>
-                        <td>
-                                <select onChange={this.handleChange} property="payroll_code">
+                            <td><input type="date" name="start" onChange={this.handleChange}></input></td>
+                            <td><input type="number" name="hours" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
+                            <td>
+                                <select onChange={this.handleChange} name="payroll_code">
                                     <option value="1">Regular</option>
                                     <option value="2">Vacation</option>
                                     <option value="3">Sick</option>
                                     <option value="4">FMLA</option>
                                     <option value="5">Unexcused/Non-Sick</option>
-                            </select>
-                        </td>
-                        <td><input type="boolean" defaultValue={this.props.clicked.dflt_mpls}></input></td>
-                            <td><button>Submit</button></td>
+                                </select>
+                            </td>
+                            <td>
+                                <select defaultValue={this.props.clicked.dflt_mpls} name="mpls" onChange={this.handleChange}>
+                                    <option value="true">In Minneapolis</option>
+                                    <option value="false">Outside Minneapolis</option>
+                                </select>
+                            </td>
+                            {/* <td><input type="boolean" defaultValue={this.props.clicked.dflt_mpls}></input></td> */}
+                            <td><button onClick={this.handleClick}>Submit</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -62,7 +96,7 @@ export class HistoryAdd extends Component {
                                 </select>
                             </td>
                             <td><input></input></td>
-                            
+
                         </tr>
                         <tr>
                             <td><input type="date"></input></td>
@@ -123,11 +157,11 @@ export class HistoryAdd extends Component {
                         </tr>
                     </tbody>
                 </table>
-                
 
-                    {/* <p>{JSON.stringify(this.props.clicked)}</p>
+
+                {/* <p>{JSON.stringify(this.props.clicked)}</p>
                 <p>{JSON.stringify(this.props.history)}</p> */}
-                
+
             </div>
 
         )

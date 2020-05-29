@@ -2,7 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 export class HistoryItem extends Component {
-    
+
+
+    // componentDidMount(){
+    //     // let state = {
+    //     //     user_id: "",
+    //     //     start: "",
+    //     //     hours: "",
+    //     //     payroll_code: "",
+    //     //     mpls: ""
+    //     // };
+    //     let selectedEmployee = this.props.clicked;
+    //     console.log("in HistoryItem CDM", selectedEmployee);
+    //     this.setState({
+    //         hours: selectedEmployee.dflt_hours,
+    //         payroll_code: 1,
+    //         mpls: selectedEmployee.dflt_mpls 
+    //         });
+    //     console.log("this.state", this.state);
+    // }//trying to preload values for entry since no changes would not trigger the onChange. right no setState isn't working for some reason.
 
     render() {
         return (

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_HOURS" actions
 function* fetchHours(action) {
@@ -18,8 +18,20 @@ function* fetchHours(action) {
     }
 }
 
+function* sendDay(action){
+    console.log("in sendDay", action.payload );
+    try {
+        yield axios.post('/api/history', action.payload);
+        yield put ({ type: 'FETCH_HOURS', user.id });
+    }catch(error){
+        console.log(error);
+        
+    }
+}
+
 function* historySaga() {
     yield takeLatest('FETCH_HOURS', fetchHours);
+    yield takeEvery('ADD_DAY', sendDay)
 }
 
 export default historySaga;
