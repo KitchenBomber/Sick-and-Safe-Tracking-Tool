@@ -1,5 +1,5 @@
 import { takeLatest } from 'redux-saga/effects';
-import LogOutButton from '../../components/LogOutButton/LogOutButton';
+
 
 function* recordClick(){
 

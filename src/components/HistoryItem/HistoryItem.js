@@ -2,15 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 export class HistoryItem extends Component {
-
+    
 
     render() {
         return (
             <tr>
-               <td>{this.props.historyItem.start}</td>
+                <td>{this.props.historyItem.start}</td>
                 <td>{this.props.historyItem.hours}</td>
                 <td>{this.props.historyItem.payroll_code}</td>
                 <td>{this.props.historyItem.mpls ? 'MPLS' : 'NON-MPLS'}</td>
+                <td>
+                    {this.props.user.access > 4 ? <button>Edit</button> : ''}
+                </td>
                 {/* <p>{JSON.stringify(this.props.clicked)}</p>
                 <p>{JSON.stringify(this.props.history)}</p> */}
             </tr>

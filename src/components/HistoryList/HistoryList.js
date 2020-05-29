@@ -22,7 +22,7 @@ export class HistoryList extends Component {
 
         let viewOrAdd = < div >
             <h3>View Employee Time Entries: </h3>
-            <button onClick={this.handleClick}>Switch Modes</button>
+            <button onClick={this.handleClick}>Go To Add Time</button>
             <table>
                 <thead>
                     <tr>
@@ -30,6 +30,7 @@ export class HistoryList extends Component {
                         <th>Hours</th>
                         <th>Pay Code</th>
                         <th>In Minneapolis</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,7 +48,7 @@ export class HistoryList extends Component {
             viewOrAdd = (
                 <div>
                     <h3>Add Employee Time:</h3>
-                    <button onClick={this.handleClick}>Switch Modes</button>
+                    <button onClick={this.handleClick}>Go To View Time</button>
                     <h4>You may add a day or a week but only one at a time</h4>
                     <HistoryAdd />
 
