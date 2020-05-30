@@ -27,7 +27,7 @@ export class HistoryAdd extends Component {
         console.log(this.state);
     }
 
-handleClick = () => {
+handleAddOneClick = () => {
     console.log(this.state);
     this.props.dispatch({type: 'ADD_DAY', payload: this.state});
 
@@ -68,7 +68,7 @@ handleClick = () => {
                                 </select>
                             </td>
                             {/* <td><input type="boolean" defaultValue={this.props.clicked.dflt_mpls}></input></td> */}
-                            <td><button onClick={this.handleClick}>Submit</button></td>
+                            <td><button onClick={this.handleAddOneClick}>Submit</button></td>
                         </tr>
                     </tbody>
                 </table>

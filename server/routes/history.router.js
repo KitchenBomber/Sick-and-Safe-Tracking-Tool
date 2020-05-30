@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
 });//End POST ROUTE
 
 router.delete('/:item_id', (req, res) => {
-    console.log('in history.router Delete, req.params.item_id', req.params.item_id);
+    console.log('in history.router Delete, req.params.item_id:', req.params.item_id);
     const queryText = `DELETE FROM "employee_time" WHERE id=$1;`;
     pool.query(queryText, [req.params.item_id])
     .then((result) => {
@@ -45,5 +45,21 @@ router.delete('/:item_id', (req, res) => {
         res.sendStatus(500);
     })
 })//End Delete Route
+
+router.put('/:start/:hours/:payroll_code/:mpls/:item_id', (req, res) => {
+    console.log('in history.router Edit, re.params.item_id:', req.params);
+    const queryText = `UPDATE "employee_time" 
+    SET "start" = $1, "hours" = $2, "payroll_code" = $3, "mpls" = $4 
+    WHERE "id" = $5;`;
+    pool.query(queryText, [req.params.start, req.params.hours, req.params.payroll_code, req.params.mpls, req.params.item_id])
+    .then((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('problem in History router Edit', error);
+        res.sendStatus(500);
+        
+    })
+    
+})
 
 module.exports = router;
