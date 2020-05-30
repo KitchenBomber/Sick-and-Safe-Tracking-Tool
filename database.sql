@@ -16,7 +16,8 @@ CREATE TABLE "user"
     "dflt_mpls" BOOLEAN DEFAULT 'true',
     "dflt_absence" INT DEFAULT '20',
     "last_login" DATE DEFAULT DATE,
-    "notes" VARCHAR (500)
+    "notes" VARCHAR (500),
+    "previous_year_carryover" INT
 );
 -- lines 14 and 18 were actually entered into the database as CURRENT_DATE not DATE but VS Code kept throwing up an angry red error
 
@@ -28,7 +29,6 @@ CREATE TABLE "employee_time"
     "hours" INT,
     "payroll_code" INT DEFAULT '1',
     "mpls" BOOLEAN,
-    "previous_year_carryover" INT,
     "sick_accrual_impact" INT,
     "sick_balance_impact" INT,
     "chargeable_impact" INT
