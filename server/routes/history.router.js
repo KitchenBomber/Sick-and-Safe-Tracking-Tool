@@ -15,7 +15,7 @@ router.get('/:id', (req, res) => {
          res.sendStatus(500);
      })
     
-});
+});//End GET ROUTE
 
 /**
  * POST route template
@@ -32,6 +32,18 @@ router.post('/', (req, res) => {
         
     })
 
-});
+});//End POST ROUTE
+
+router.delete('/:item_id', (req, res) => {
+    console.log('in history.router Delete, req.params.item_id', req.params.item_id);
+    const queryText = `DELETE FROM "employee_time" WHERE id=$1;`;
+    pool.query(queryText, [req.params.item_id])
+    .then((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('problem in History router Delete', error);
+        res.sendStatus(500);
+    })
+})//End Delete Route
 
 module.exports = router;

@@ -19,6 +19,17 @@ function* fetchHours(action) {
     }
 }
 
+function* removeDay(action){
+    console.log("in removeDay", action.payload );
+    try{
+        yield axios.delete(`/api/history/${action.payload.item_id} `);
+        yield put ({ type: 'FETCH_HOURS', payload: action.payload});
+    }catch(error){
+        console.log('Delete failed', error);
+        
+    }
+}
+
 function* sendDay(action){
 
     console.log("in sendDay", action.payload );
@@ -26,14 +37,15 @@ function* sendDay(action){
         yield axios.post('/api/history', action.payload);
         yield put ({ type: 'FETCH_HOURS', payload: action.payload});
     }catch(error){
-        console.log(error);
+        console.log('add day failed', error);
         
     }
 }
 
 function* historySaga() {
     yield takeLatest('FETCH_HOURS', fetchHours);
-    yield takeEvery('ADD_DAY', sendDay)
+    yield takeEvery('ADD_DAY', sendDay);
+    yield takeEvery('DELETE', removeDay)
 }
 
 export default historySaga;
