@@ -17,7 +17,7 @@ export class VisualizerList extends PureComponent {
     componentDidMount() {
         this.props.dispatch({ type: "FETCH_HOURS", payload: this.props.clicked });
         console.log('in cDM VizualizerList');
-        // this.payrollCalculator([this.props.history]);
+        this.payrollCalculator([this.props.history]);
         // this.state.sickAndSafe.push(this.props.clicked.previous_year_carryover)
         
     }
@@ -29,30 +29,38 @@ export class VisualizerList extends PureComponent {
        
  
 
-    // payrollCalculator = () => {
-    //     let timeArray = this.props.history
-    //     console.log('this.props.clicked:', this.props.clicked, ", this props.history:", [this.props.history], "this.props.state", this.state);
-    //     let sickTime = 0;
-    //     let towardsAccrual = 0;
-    //     let newChargeable = 0;
-    //     console.log('in payrollCalculator', this.timeArray);
-    //     for (let i=0; i < timeArray.length; i ++){
-    //         if (timeArray.payroll_code = 1){
-    //             towardsAccrual += timeArray.hours;
-    //             if (towardsAccrual >= 30){
-    //                 towardsAccrual = towardsAccrual - 30;
-    //                 sickTime += 1;
-    //                 this.state.sickAndSafe.push(...this.state.sickAndSafe, this.state.sickAndSafe[this.state.sickAndSafe -1] + sickTime);
-    //                 this.state.accrual.push(...this.state.accrual, towardsAccrual);
-    //                 this.state.chargeable.push(...this.state.chargeable, this.state.chargeable[this.state.chargeable.length - 1] + newChargeable)
-    //                 //end of Regular Time Calculation
-    //                 console.log('this.state:', this.state);
-                    
-    //             } 
-    //         }
-    //     }
-    //     return this.state
-    // }
+    payrollCalculator = () => {
+        let timeArray = this.props.history
+        let arrayToReturn = [];
+        console.log('this.props.clicked:', this.props.clicked, ", this props.history:", [this.props.history], "this.state", this.state);
+        let sickTime = 0;
+        let towardsAccrual = 0;
+        let newChargeable = 0;
+        console.log('in payrollCalculator', timeArray);
+        for (let i=0; i < timeArray.length; i ++){
+
+            let arrayItem = {
+                sickAndSafe: "",
+                accrual: "",
+                chargeable: ""
+            }
+            if (timeArray.payroll_code = 1){
+                towardsAccrual += timeArray.hours;
+                if (towardsAccrual >= 30){
+                    towardsAccrual = towardsAccrual - 30;
+                    sickTime += 1;
+                    arrayItem.sickAndSafe = (this.state.sickAndSafe[this.state.sickAndSafe -1] + sickTime);
+                    this.state.accrual.push(...this.state.accrual, towardsAccrual);
+                    this.state.chargeable.push(...this.state.chargeable, this.state.chargeable[this.state.chargeable.length - 1] + newChargeable)
+                    //end of Regular Time Calculation
+                    console.log('this.state:', this.state);
+                  
+                    //push the item into the array to be returned 
+                } 
+            }
+        }
+        return this.state
+    }
    
 
     render() {

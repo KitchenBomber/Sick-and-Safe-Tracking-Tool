@@ -13,9 +13,13 @@ export class HistoryList extends Component {
     }
 
     handleClick = () => {
+        if(this.props.user.access > 4){
         this.setState({
             add: !this.state.add
         })
+    } else {
+        alert("you are not authorized to add time");
+     }
     }//This handleClick flips this screen between View and Add mode
 
     render() {
@@ -46,6 +50,7 @@ export class HistoryList extends Component {
 
 
         if (this.state.add) {
+            // need to add conditional here so employee can't do it.
             viewOrAdd = (
                 <div>
                     <h3>Add Employee Time:</h3>
@@ -69,7 +74,8 @@ export class HistoryList extends Component {
 }
 const mapStateToProps = state => ({
     clicked: state.clicked,
-    history: state.history
+    history: state.history,
+    user: state.user
 });
 
 export default connect(mapStateToProps)(HistoryList);

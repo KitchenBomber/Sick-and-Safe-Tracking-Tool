@@ -13,7 +13,7 @@ const UserPage = (props) => (
     </h1>
     <p>Your ID is: {props.user.id}</p>
     <LogOutButton className="log-in" />
-    {JSON.stringify(props.user)}
+    {/* {JSON.stringify(props.user)} */}
   </div>
 );
 
