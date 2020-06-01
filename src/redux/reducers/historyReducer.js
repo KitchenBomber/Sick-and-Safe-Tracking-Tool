@@ -12,5 +12,5 @@ const historyReducer = (state = [], action) => {
 };
 
 // hours will be on the redux state at:
-// state.history
+// state.userHistory
 export default historyReducer;

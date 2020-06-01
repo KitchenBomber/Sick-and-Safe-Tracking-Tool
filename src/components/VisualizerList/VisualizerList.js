@@ -5,67 +5,74 @@ import {
 } from 'recharts';
 import VisualizerItem from '../VisualizerItem/VisualizerItem';
 
-const timeData = [
-    { name: 'Page A', sickAndSafe: 40, accrual: 0, chargeable: 4 },
-    { name: 'Page B', sickAndSafe: 40, accrual: 8, chargeable: 4 },
-    { name: 'Page C', sickAndSafe: 40, accrual: 16, chargeable: 4 },
-    { name: 'Page D', sickAndSafe: 40, accrual: 24, chargeable: 4 },
-    { name: 'Page E', sickAndSafe: 41, accrual: 2, chargeable: 200 }
-]
+// const timeData = [
+//     { name: 'Page A', sickAndSafe: 40, accrual: 0, chargeable: 4 },
+//     { name: 'Page B', sickAndSafe: 40, accrual: 8, chargeable: 4 },
+//     { name: 'Page C', sickAndSafe: 40, accrual: 16, chargeable: 4 },
+//     { name: 'Page D', sickAndSafe: 40, accrual: 24, chargeable: 4 },
+//     { name: 'Page E', sickAndSafe: 41, accrual: 2, chargeable: 200 }
+// ]
 
 export class VisualizerList extends PureComponent {
     componentDidMount() {
         this.props.dispatch({ type: "FETCH_HOURS", payload: this.props.clicked });
         console.log('in cDM VizualizerList');
-        this.payrollCalculator([this.props.history]);
+        // this.payrollCalculator([this.props.userHistory]);
         // this.state.sickAndSafe.push(this.props.clicked.previous_year_carryover)
         
     }
 
     clickHandler = () => {
-        console.log('this.props.clicked:', this.props.clicked, ", this props.history:", [this.props.history], "timeData", timeData);
+        console.log('this.props.clicked:', this.props.clicked, ", this props.userHistory:", [this.props.userHistory]);
         
     }
-       
- 
+    
+
 
     payrollCalculator = () => {
-        let timeArray = this.props.history
-        let arrayToReturn = [];
-        console.log('this.props.clicked:', this.props.clicked, ", this props.history:", [this.props.history], "this.state", this.state);
+        let arrayToCalculate = [this.props.userHistory]
+        //this is the array of objects in
+        const calculatorArray = [];
+        //this is the array to return
         let sickTime = 0;
         let towardsAccrual = 0;
         let newChargeable = 0;
-        console.log('in payrollCalculator', timeArray);
-        for (let i=0; i < timeArray.length; i ++){
+        //these are reference variables that record what was going on before each entry. I will want the sickTime to preload carryover when i'm at that point.
+
+        console.log('in payrollCalculator', arrayToCalculate);
+        for (let i = 0; i < arrayToCalculate.length; i++) {
 
             let arrayItem = {
-                sickAndSafe: "",
-                accrual: "",
-                chargeable: ""
+                date: "",
+                sickAndSafe: 0,
+                accrual: 0,
+                chargeable: 0
             }
-            if (timeArray.payroll_code = 1){
-                towardsAccrual += timeArray.hours;
-                if (towardsAccrual >= 30){
+            //this is the object that needs to be filled in and added to the array that will feed into the 
+            if (arrayToCalculate.payroll_code = 1) {
+                towardsAccrual += arrayToCalculate[i].hours;
+                if (towardsAccrual >= 30) {
                     towardsAccrual = towardsAccrual - 30;
                     sickTime += 1;
-                    arrayItem.sickAndSafe = (this.state.sickAndSafe[this.state.sickAndSafe -1] + sickTime);
-                    this.state.accrual.push(...this.state.accrual, towardsAccrual);
-                    this.state.chargeable.push(...this.state.chargeable, this.state.chargeable[this.state.chargeable.length - 1] + newChargeable)
+                    arrayItem.sickAndSafe = sickTime;
+                    arrayItem.accrual = towardsAccrual;
+                    arrayItem.chargeable = newChargeable
                     //end of Regular Time Calculation
                     console.log('this.state:', this.state);
-                  
+
                     //push the item into the array to be returned 
-                } 
+                }
             }
         }
-        return this.state
+        return calculatorArray
     }
+
+    
    
 
     render() {
-
-       
+      
+        { this.payrollCalculator()}
 
         return (
             <div>
@@ -73,14 +80,14 @@ export class VisualizerList extends PureComponent {
                 <AreaChart
                     width={500}
                     height={200}
-                    data={timeData}
+                    data={calculatorArray}
                     syncId="anyId"
                     margin={{
                         top: 10, right: 30, left: 0, bottom: 0,
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
+                    <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip />
                     <Area type="monotone" dataKey="sickAndSafe" stroke="#8884d8" fill="#8884d8" />
@@ -89,14 +96,14 @@ export class VisualizerList extends PureComponent {
                 <AreaChart
                     width={500}
                     height={200}
-                    data={timeData}
+                    data={calculatorArray}
                     syncId="anyId"
                     margin={{
                         top: 10, right: 30, left: 0, bottom: 0,
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
+                    <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip />
                     <Area type="monotone" dataKey="accrual" stroke="#82ca9d" fill="#82ca9d" />
@@ -105,14 +112,14 @@ export class VisualizerList extends PureComponent {
                     <AreaChart
                     width={500}
                     height={200}
-                    data={timeData}
+                    data={calculatorArray}
                     syncId="anyId"
                     margin={{
                         top: 10, right: 30, left: 0, bottom: 0,
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
+                    <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip />
                     <Area type="monotone" dataKey="chargeable" stroke="#FF0000" fill="#FF0000" />
@@ -131,7 +138,7 @@ export class VisualizerList extends PureComponent {
 
 const mapStateToProps = state => ({
     clicked: state.clicked,
-    history: state.history
+    userHistory: state.userHistory
 });
 
 export default connect(mapStateToProps)(VisualizerList);

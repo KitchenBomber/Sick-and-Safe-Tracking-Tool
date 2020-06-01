@@ -13,7 +13,7 @@ export class EmployeeList extends Component {
         return (
             <div>
                 <h3>Hello from EmployeeList</h3>
-                <p>Current User: {JSON.stringify(this.props.user)}</p>
+                <p>Current User: {this.props.user.username} </p>
                 {/* <p>User Employees: {JSON.stringify(this.props.employees)}</p> */}
                 <table>
                     <thead>

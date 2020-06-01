@@ -39,11 +39,11 @@ export class HistoryList extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.history.map(historyItem =>
+                    {this.props.userHistory.map(historyItem =>
                         <HistoryItem key={historyItem.id} historyItem={historyItem} />)}
                 </tbody>
             </table>
-            {/* <p>{JSON.stringify(this.props.history)}</p> */}
+            {/* <p>{JSON.stringify(this.props.userHistory)}</p> */}
 
 
         </div >
@@ -74,7 +74,7 @@ export class HistoryList extends Component {
 }
 const mapStateToProps = state => ({
     clicked: state.clicked,
-    history: state.history,
+    userHistory: state.userHistory,
     user: state.user
 });
 

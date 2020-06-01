@@ -69,7 +69,7 @@ let viewOrEdit =
             {this.props.user.access > 4 ? <button onClick={this.handleDelete}>Delete</button> : ''}
         </td>
         {/* <p>{JSON.stringify(this.props.clicked)}</p>
-                <p>{JSON.stringify(this.props.history)}</p> */}
+                <p>{JSON.stringify(this.props.userHistory)}</p> */}
     </tr>
 
 if (this.state.editMode){
@@ -113,7 +113,7 @@ if (this.state.editMode){
 
 const mapStateToProps = state => ({
     clicked: state.clicked,
-    history: state.history,
+    userHistory: state.userHistory,
     user: state.user
 });
 

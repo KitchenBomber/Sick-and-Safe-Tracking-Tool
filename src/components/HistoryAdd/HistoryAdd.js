@@ -161,7 +161,7 @@ handleAddOneClick = () => {
 
 
                 {/* <p>{JSON.stringify(this.props.clicked)}</p>
-                <p>{JSON.stringify(this.props.history)}</p> */}
+                <p>{JSON.stringify(this.props.userHistory)}</p> */}
 
             </div>
 
@@ -172,7 +172,7 @@ handleAddOneClick = () => {
 
 const mapStateToProps = state => ({
     clicked: state.clicked,
-    history: state.history
+    userHistory: state.userHistory
 });
 
 export default connect(mapStateToProps)(HistoryAdd);
