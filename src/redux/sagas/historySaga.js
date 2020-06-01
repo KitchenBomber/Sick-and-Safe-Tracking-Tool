@@ -38,11 +38,7 @@ function* editDay(action){
 function* removeDay(action){
     console.log("in removeDay", action.payload );
     try{
-        yield axios.delete(`/api/history/${action.payload.user_id}
-        /${action.payload.start}/
-        ${action.payload.hours}/
-        ${action.payload.payroll_code}/
-        ${action.payload.mpls}`);
+        yield axios.delete(`/api/history/${action.payload.item_id}`);
         yield put ({ type: 'FETCH_HOURS', payload: action.payload});
     }catch(error){
         console.log('Delete failed', error);
