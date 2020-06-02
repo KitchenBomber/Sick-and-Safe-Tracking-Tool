@@ -6,6 +6,7 @@ import {
 import VisualizerItem from '../VisualizerItem/VisualizerItem';
 
 
+
 export class VisualizerList extends PureComponent {
     componentDidMount() {
         this.props.dispatch({ type: "FETCH_HOURS", payload: this.props.clicked });
@@ -43,10 +44,10 @@ export class VisualizerList extends PureComponent {
                 accruedThisYear: 0
             }
             //this is the object that needs to be filled in and added to the array that will feed into the graphs
-            if (arrayToCalculate[i].payroll_code = 1) {
+            if (arrayToCalculate[i].payroll_code === 1 && arrayToCalculate[i].mpls ) {
                 console.log('recording regular hours');
                 towardsAccrual += arrayToCalculate[i].hours;
-                if (towardsAccrual >= 30 && arrayItem.sickAndSafe < 80) {
+                if (towardsAccrual >= 30 && arrayItem.sickAndSafe < 80 ) {
                     towardsAccrual = towardsAccrual - 30;
                     sickTime += 1;
                     arrayItem.sickAndSafe = sickTime;
@@ -57,19 +58,55 @@ export class VisualizerList extends PureComponent {
                     arrayItem.accrual = towardsAccrual;
                     arrayItem.chargeable = charged
                 };
-            };//end process Regular Hours
-            if (arrayToCalculate[i].payroll_code = 2) {
+            } else {
+                arrayItem.sickAndSafe = sickTime;
+                arrayItem.accrual = towardsAccrual;
+                arrayItem.chargeable = charged
+            }
+            ;//end process Regular Hours
+            if (arrayToCalculate[i].payroll_code === 2) {
                 console.log('recording vacation');
-                //until a future build where I am tracking vacation this doesn't need to do anything
+                //until a future build where I am tracking vacation this doesn't need to do anything other than mark the passage of time with values unchanged
                 arrayItem.sickAndSafe = sickTime;
                 arrayItem.accrual = towardsAccrual;
                 arrayItem.chargeable = charged
             };//end process Vacation Hours
-            if (arrayToCalculate[i].payroll_code = 3) {
+            if (arrayToCalculate[i].payroll_code === 3) {
                 console.log('recording sick time');
-
-
-            };
+                sickTime -= arrayToCalculate[i].hours;
+                if (sickTime < 0) {
+                    charged -= sickTime;
+                    sickTime = 0;
+                    arrayItem.sickAndSafe = sickTime;
+                    arrayItem.accrual = towardsAccrual;
+                    arrayItem.chargeable = charged
+                } else {
+                    arrayItem.sickAndSafe = sickTime;
+                    arrayItem.accrual = towardsAccrual;
+                    arrayItem.chargeable = charged
+                }
+            };//end process Sick Hours
+            if (arrayToCalculate[i].payroll_code === 4) {
+                console.log('recording FMLA time');
+                sickTime -= arrayToCalculate[i].hours;
+                if (sickTime < 0){
+                    sickTime = 0;
+                    arrayItem.sickAndSafe = sickTime;
+                    arrayItem.accrual = towardsAccrual;
+                    arrayItem.chargeable = charged
+                } else {
+                    arrayItem.sickAndSafe = sickTime;
+                    arrayItem.accrual = towardsAccrual;
+                    arrayItem.chargeable = charged
+                }
+            };//end process FMLA
+            if (arrayToCalculate[i].payroll_code === 5) {
+                console.log('recording Unexcused time');
+                charged -= arrayToCalculate[i].hours;
+                arrayItem.sickAndSafe = sickTime;
+                arrayItem.accrual = towardsAccrual;
+                arrayItem.chargeable = charged
+            };//end process unexcused
             calculatorArray.push(arrayItem);
             console.log('calculatorArray:', calculatorArray);
         }
