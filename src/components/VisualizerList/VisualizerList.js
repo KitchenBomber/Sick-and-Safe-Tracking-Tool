@@ -5,13 +5,6 @@ import {
 } from 'recharts';
 import VisualizerItem from '../VisualizerItem/VisualizerItem';
 
-// const timeData = [
-//     { name: 'Page A', sickAndSafe: 40, accrual: 0, chargeable: 4 },
-//     { name: 'Page B', sickAndSafe: 40, accrual: 8, chargeable: 4 },
-//     { name: 'Page C', sickAndSafe: 40, accrual: 16, chargeable: 4 },
-//     { name: 'Page D', sickAndSafe: 40, accrual: 24, chargeable: 4 },
-//     { name: 'Page E', sickAndSafe: 41, accrual: 2, chargeable: 200 }
-// ]
 
 export class VisualizerList extends PureComponent {
     componentDidMount() {
@@ -19,60 +12,117 @@ export class VisualizerList extends PureComponent {
         console.log('in cDM VizualizerList');
         // this.payrollCalculator([this.props.userHistory]);
         // this.state.sickAndSafe.push(this.props.clicked.previous_year_carryover)
-        
+
     }
 
     clickHandler = () => {
         console.log('this.props.clicked:', this.props.clicked, ", this props.userHistory:", [this.props.userHistory]);
-        
+
     }
-    
+
+
 
 
     payrollCalculator = () => {
-        let arrayToCalculate = [this.props.userHistory]
+        let arrayToCalculate = this.props.userHistory
         //this is the array of objects in
         const calculatorArray = [];
         //this is the array to return
         let sickTime = 0;
         let towardsAccrual = 0;
-        let newChargeable = 0;
+        let charged = 0;
         //these are reference variables that record what was going on before each entry. I will want the sickTime to preload carryover when i'm at that point.
-
-        console.log('in payrollCalculator', arrayToCalculate);
+        console.log('in payrollCalculator, arrayToCalculate=', arrayToCalculate);
+        //start loop
         for (let i = 0; i < arrayToCalculate.length; i++) {
-
             let arrayItem = {
-                date: "",
+                date: arrayToCalculate[i].start,
                 sickAndSafe: 0,
                 accrual: 0,
-                chargeable: 0
+                chargeable: 0,
+                accruedThisYear: 0
             }
-            //this is the object that needs to be filled in and added to the array that will feed into the 
-            if (arrayToCalculate.payroll_code = 1) {
+            //this is the object that needs to be filled in and added to the array that will feed into the graphs
+            if (arrayToCalculate[i].payroll_code = 1) {
+                console.log('recording regular hours');
                 towardsAccrual += arrayToCalculate[i].hours;
-                if (towardsAccrual >= 30) {
+                if (towardsAccrual >= 30 && arrayItem.sickAndSafe < 80) {
                     towardsAccrual = towardsAccrual - 30;
                     sickTime += 1;
                     arrayItem.sickAndSafe = sickTime;
                     arrayItem.accrual = towardsAccrual;
-                    arrayItem.chargeable = newChargeable
-                    //end of Regular Time Calculation
-                    console.log('this.state:', this.state);
+                    arrayItem.chargeable = charged
+                } else {
+                    arrayItem.sickAndSafe = sickTime;
+                    arrayItem.accrual = towardsAccrual;
+                    arrayItem.chargeable = charged
+                };
+            };//end process Regular Hours
+            if (arrayToCalculate[i].payroll_code = 2) {
+                console.log('recording vacation');
+                //until a future build where I am tracking vacation this doesn't need to do anything
+                arrayItem.sickAndSafe = sickTime;
+                arrayItem.accrual = towardsAccrual;
+                arrayItem.chargeable = charged
+            };//end process Vacation Hours
+            if (arrayToCalculate[i].payroll_code = 3) {
+                console.log('recording sick time');
 
-                    //push the item into the array to be returned 
-                }
-            }
+
+            };
+            calculatorArray.push(arrayItem);
+            console.log('calculatorArray:', calculatorArray);
         }
         return calculatorArray
     }
 
-    
-   
+
+
+
+
 
     render() {
-      
-        { this.payrollCalculator()}
+
+        let calculatorArray = this.payrollCalculator();
+
+        // payrollCalculator = () => {
+        //     let arrayToCalculate = [this.props.userHistory]
+        //     //this is the array of objects in
+        //     // let calculatorArray = [];
+        //     //this is the array to return
+        //     let sickTime = 0;
+        //     let towardsAccrual = 0;
+        //     let newChargeable = 0;
+        //     //these are reference variables that record what was going on before each entry. I will want the sickTime to preload carryover when i'm at that point.
+
+        //     console.log('in payrollCalculator', arrayToCalculate);
+        //     for (let i = 0; i < arrayToCalculate.length; i++) {
+
+        //         let arrayItem = {
+        //             date: "",
+        //             sickAndSafe: 0,
+        //             accrual: 0,
+        //             chargeable: 0
+        //         }
+        //         //this is the object that needs to be filled in and added to the array that will feed into the 
+        //         if (arrayToCalculate.payroll_code = 1) {
+        //             towardsAccrual += arrayToCalculate[i].hours;
+        //             if (towardsAccrual >= 30) {
+        //                 towardsAccrual = towardsAccrual - 30;
+        //                 sickTime += 1;
+        //                 arrayItem.sickAndSafe = sickTime;
+        //                 arrayItem.accrual = towardsAccrual;
+        //                 arrayItem.chargeable = newChargeable
+        //                 //end of Regular Time Calculation
+        //                 console.log('this.state:', this.state);
+
+        //                 //push the item into the array to be returned 
+        //             }
+        //         }
+        //     }
+        //     return calculatorArray
+        // }
+
 
         return (
             <div>
@@ -109,7 +159,7 @@ export class VisualizerList extends PureComponent {
                     <Area type="monotone" dataKey="accrual" stroke="#82ca9d" fill="#82ca9d" />
                 </AreaChart>
                 <h3>Unexcused Absences not covered by Sick & Safe are chargeable and may be subject to disciplinary action.</h3>
-                    <AreaChart
+                <AreaChart
                     width={500}
                     height={200}
                     data={calculatorArray}
@@ -129,8 +179,8 @@ export class VisualizerList extends PureComponent {
                 <p>{JSON.stringify(this.state)}</p>
                 <p>{JSON.stringify(this.props.clicked)}</p>
 
-                <button onClick={this.clickHandler} >BIG DUMB BUTTON</button>
-                <VisualizerItem/>
+                <button onClick={this.payrollCalculator} >BIG DUMB BUTTON</button>
+                <VisualizerItem />
             </div>
         )
     }

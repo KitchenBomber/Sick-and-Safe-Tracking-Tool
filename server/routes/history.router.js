@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get('/:id', (req, res) => {
     console.log('in history GET req.params.id:', req.params.id);
-    const queryText  = `SELECT * FROM "employee_time" WHERE "user_id" = $1 ORDER BY "start" DESC;`;
+    const queryText  = `SELECT * FROM "employee_time" WHERE "user_id" = $1 ORDER BY "start";`;
      pool.query(queryText, [req.params.id])
      .then(results => res.send(results.rows))
      .catch(error => {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 export class HistoryAdd extends Component {
 
     componentDidMount() {
-        
+
         let selectedEmployee = this.props.clicked;
         console.log("in HistoryAdd CDM", selectedEmployee);
         this.setState({
@@ -13,9 +13,30 @@ export class HistoryAdd extends Component {
             start: "",
             hours: selectedEmployee.dflt_hours,
             payroll_code: "1",
-            mpls: selectedEmployee.dflt_mpls
+            //start addFive
+            mpls: selectedEmployee.dflt_mpls,
+            start1: "",
+            hours1: selectedEmployee.dflt_hours,
+            payroll_code1: "1",
+            mpls1: selectedEmployee.dflt_mpls,
+            start2: "",
+            hours2: selectedEmployee.dflt_hours,
+            payroll_code2: "1",
+            mpls2: selectedEmployee.dflt_mpls,
+            start3: "",
+            hours3: selectedEmployee.dflt_hours,
+            payroll_code3: "1",
+            mpls3: selectedEmployee.dflt_mpls,
+            start4: "",
+            hours4: selectedEmployee.dflt_hours,
+            payroll_code4: "1",
+            mpls4: selectedEmployee.dflt_mpls,
+            start5: "",
+            hours5: selectedEmployee.dflt_hours,
+            payroll_code5: "1",
+            mpls5: selectedEmployee.dflt_mpls
         })
-    }//this sets the initial state, may not work when i scale it up to 5 entries at a time.
+    }//this sets the initial state in case a value isn't changed before being submitted
 
     handleChange = (event) => {
         const value = event.target.value;
@@ -27,11 +48,17 @@ export class HistoryAdd extends Component {
         console.log(this.state);
     }
 
-handleAddOneClick = () => {
-    console.log(this.state);
-    this.props.dispatch({type: 'ADD_DAY', payload: this.state});
+    handleAddOneClick = () => {
+        console.log(this.state);
+        this.props.dispatch({ type: 'ADD_DAY', payload: this.state });
 
-}
+    }
+
+    handleAddFiveClick = () => {
+        console.log(this.state);
+        this.props.dispatch({ type: 'ADD_WEEK', payload: this.state });
+
+    }
 
     render() {
         return (
@@ -67,7 +94,6 @@ handleAddOneClick = () => {
                                     <option value="false">Outside Minneapolis</option>
                                 </select>
                             </td>
-                            {/* <td><input type="boolean" defaultValue={this.props.clicked.dflt_mpls}></input></td> */}
                             <td><button onClick={this.handleAddOneClick}>Submit</button></td>
                         </tr>
                     </tbody>
@@ -84,11 +110,12 @@ handleAddOneClick = () => {
                         </tr>
                     </thead>
                     <tbody>
+                        {/* day 1 */}
                         <tr>
-                            <td><input type="date"></input></td>
-                            <td><input></input></td>
+                            <td><input type="date" name="start1" onChange={this.handleChange}></input></td>
+                            <td><input type="number" name="hours1" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
                             <td>
-                                <select>
+                                <select onChange={this.handleChange} name="payroll_code1">
                                     <option value="1">Regular</option>
                                     <option value="2">Vacation</option>
                                     <option value="3">Sick</option>
@@ -96,14 +123,20 @@ handleAddOneClick = () => {
                                     <option value="5">Unexcused/Non-Sick</option>
                                 </select>
                             </td>
-                            <td><input></input></td>
-
+                            <td>
+                                <select defaultValue={this.props.clicked.dflt_mpls} name="mpls1" onChange={this.handleChange}>
+                                    <option value="true">In Minneapolis</option>
+                                    <option value="false">Outside Minneapolis</option>
+                                </select>
+                            </td>
+                            <td></td>
                         </tr>
+                        {/* day 2 */}
                         <tr>
-                            <td><input type="date"></input></td>
-                            <td><input></input></td>
+                            <td><input type="date" name="start2" onChange={this.handleChange}></input></td>
+                            <td><input type="number" name="hours2" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
                             <td>
-                                <select>
+                                <select onChange={this.handleChange} name="payroll_code2">
                                     <option value="1">Regular</option>
                                     <option value="2">Vacation</option>
                                     <option value="3">Sick</option>
@@ -111,13 +144,20 @@ handleAddOneClick = () => {
                                     <option value="5">Unexcused/Non-Sick</option>
                                 </select>
                             </td>
-                            <td><input></input></td>
+                            <td>
+                                <select defaultValue={this.props.clicked.dflt_mpls} name="mpls2" onChange={this.handleChange}>
+                                    <option value="true">In Minneapolis</option>
+                                    <option value="false">Outside Minneapolis</option>
+                                </select>
+                            </td>
+                            <td></td>
                         </tr>
+                        {/* day 3 */}
                         <tr>
-                            <td><input type="date"></input></td>
-                            <td><input></input></td>
+                            <td><input type="date" name="start3" onChange={this.handleChange}></input></td>
+                            <td><input type="number" name="hours3" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
                             <td>
-                                <select>
+                                <select onChange={this.handleChange} name="payroll_code3">
                                     <option value="1">Regular</option>
                                     <option value="2">Vacation</option>
                                     <option value="3">Sick</option>
@@ -125,13 +165,20 @@ handleAddOneClick = () => {
                                     <option value="5">Unexcused/Non-Sick</option>
                                 </select>
                             </td>
-                            <td><input></input></td>
+                            <td>
+                                <select defaultValue={this.props.clicked.dflt_mpls} name="mpls3" onChange={this.handleChange}>
+                                    <option value="true">In Minneapolis</option>
+                                    <option value="false">Outside Minneapolis</option>
+                                </select>
+                            </td>
+                            <td></td>
                         </tr>
+                        {/* day 4 */}
                         <tr>
-                            <td><input type="date"></input></td>
-                            <td><input></input></td>
+                            <td><input type="date" name="start4" onChange={this.handleChange}></input></td>
+                            <td><input type="number" name="hours4" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
                             <td>
-                                <select>
+                                <select onChange={this.handleChange} name="payroll_code4">
                                     <option value="1">Regular</option>
                                     <option value="2">Vacation</option>
                                     <option value="3">Sick</option>
@@ -139,13 +186,20 @@ handleAddOneClick = () => {
                                     <option value="5">Unexcused/Non-Sick</option>
                                 </select>
                             </td>
-                            <td><input></input></td>
+                            <td>
+                                <select defaultValue={this.props.clicked.dflt_mpls} name="mpls4" onChange={this.handleChange}>
+                                    <option value="true">In Minneapolis</option>
+                                    <option value="false">Outside Minneapolis</option>
+                                </select>
+                            </td>                          
+                            <td></td>
                         </tr>
+                        {/* day 5 */}
                         <tr>
-                            <td><input type="date"></input></td>
-                            <td><input></input></td>
+                            <td><input type="date" name="start5" onChange={this.handleChange}></input></td>
+                            <td><input type="number" name="hours5" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
                             <td>
-                                <select>
+                                <select onChange={this.handleChange} name="payroll_code5">
                                     <option value="1">Regular</option>
                                     <option value="2">Vacation</option>
                                     <option value="3">Sick</option>
@@ -153,17 +207,23 @@ handleAddOneClick = () => {
                                     <option value="5">Unexcused/Non-Sick</option>
                                 </select>
                             </td>
-                            <td><input></input></td>
-                            <td><button>Submit</button></td>
+                            <td>
+                                <select defaultValue={this.props.clicked.dflt_mpls} name="mpls5" onChange={this.handleChange}>
+                                    <option value="true">In Minneapolis</option>
+                                    <option value="false">Outside Minneapolis</option>
+                                </select>
+                            </td>
+                            <td><button onClick={this.handleAddFiveClick}>Submit</button></td>
                         </tr>
                     </tbody>
                 </table>
-
-
-                {/* <p>{JSON.stringify(this.props.clicked)}</p>
-                <p>{JSON.stringify(this.props.userHistory)}</p> */}
-
             </div>
+
+
+
+
+
+
 
         )
     }
