@@ -8,7 +8,7 @@ export class SupervisorItem extends Component {
     render() {
         return (
             <div>
-                <h3>Hello from Supervisor Item</h3> 
+                {/* <h3>Hello from Supervisor Item</h3>  */}
                 <EmployeeList/>
             </div>
         )

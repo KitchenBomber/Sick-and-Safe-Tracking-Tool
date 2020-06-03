@@ -27,7 +27,7 @@ export class HistoryList extends Component {
         let viewOrAdd = < div >
             <h3>View Employee Time Entries: </h3>
             <button onClick={this.handleClick}>Go To Add Time</button>
-            <table>
+            <table className="historyTable">
                 <thead>
                     <tr>
                         <th>Start Time</th>
@@ -38,7 +38,7 @@ export class HistoryList extends Component {
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     {this.props.userHistory.map(historyItem =>
                         <HistoryItem key={historyItem.id} historyItem={historyItem} />)}
                 </tbody>
@@ -54,7 +54,7 @@ export class HistoryList extends Component {
             viewOrAdd = (
                 <div>
                     <h3>Add Employee Time:</h3>
-                    <button onClick={this.handleClick}>Go To View Time</button>
+                    <button onClick={this.handleClick}>Return To View Time</button>
                     <h4>You may enter either a day or a week</h4>
                     <HistoryAdd />
 

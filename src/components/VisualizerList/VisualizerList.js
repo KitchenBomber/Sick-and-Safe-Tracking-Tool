@@ -160,7 +160,7 @@ export class VisualizerList extends PureComponent {
             <div>
                 <h3>Available Sick and Safe Time: </h3>
                 <AreaChart
-                    width={500}
+                    width={1000}
                     height={200}
                     data={calculatorArray}
                     syncId="anyId"
@@ -177,7 +177,7 @@ export class VisualizerList extends PureComponent {
                 <h3>Time Towards Accrual:</h3>
                 <p>One Hour of Sick and Safe Time is earned for every 30 hours worked in Minneapolis. This shows accumulated hours towards your next accrual.</p>
                 <AreaChart
-                    width={500}
+                    width={1000}
                     height={200}
                     data={calculatorArray}
                     syncId="anyId"
@@ -194,7 +194,7 @@ export class VisualizerList extends PureComponent {
             <h3>Unexcused Absences:</h3>
             <p>Unplanned Absences not covered by Sick & Safe or another policy are chargeable and may be subject to disciplinary action.</p>
                 <AreaChart
-                    width={500}
+                    width={1000}
                     height={200}
                     data={calculatorArray}
                     syncId="anyId"
@@ -203,7 +203,7 @@ export class VisualizerList extends PureComponent {
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" />
+                    <XAxis dataKey="date"/>
                     <YAxis />
                     <Tooltip />
                     <Area type="monotone" dataKey="chargeable" stroke="#FF0000" fill="#FF0000" />

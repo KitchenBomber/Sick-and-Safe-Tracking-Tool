@@ -65,7 +65,7 @@ export class HistoryAdd extends Component {
             <div>
                 <h3>Enter a Single Day</h3>
                 {/* <p>{JSON.stringify(this.props.clicked)}</p> */}
-                <table>
+                <table className="addForm">
                     <thead>
                         <tr>
                             <th></th>
@@ -99,7 +99,7 @@ export class HistoryAdd extends Component {
                     </tbody>
                 </table>
                 <h3>Enter 5 Days</h3>
-                <table>
+                <table className="addForm">
                     <thead>
                         <tr>
                             <th></th>
