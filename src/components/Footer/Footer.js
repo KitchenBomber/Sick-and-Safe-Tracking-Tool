@@ -8,7 +8,8 @@ import './Footer.css'
 
 const Footer = () => (
   <footer>
-    &copy; Alan Henderson Business Solutions
+    &copy; Alan Henderson Business Solutions,
+    <h5>In Association with Prime Digital Academy Solo Projects</h5>
   </footer>
 );
 

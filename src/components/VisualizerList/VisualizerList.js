@@ -18,7 +18,7 @@ export class VisualizerList extends PureComponent {
     }
 
     clickHandler = () => {
-        console.log('In the Big Dumb Button! this.props.clicked:', this.props.clicked, ", this props.userHistory:", [this.props.userHistory], 'this.props.user.previous_year_carryover:', this.props.user.previous_year_carryover);
+        console.log('In the Big Dumb Button! this.props.clicked:', this.props.clicked, ", this props.userHistory:", [this.props.userHistory], 'this.props.user.previous_year_carryover:', this.props.user.previous_year_carryover, 'daysSinceStart:', this.payrollCalculator.daysSinceStart);
 
     }
 
@@ -38,7 +38,16 @@ export class VisualizerList extends PureComponent {
         console.log('in payrollCalculator, arrayToCalculate=', arrayToCalculate);
         //start loop
         for (let i = 0; i < arrayToCalculate.length; i++) {
-            let formattedDate = moment(arrayToCalculate[i].start).format('MMMM Do YYYY')
+            let formattedDate = moment(arrayToCalculate[i].start).format('MMMM Do YYYY');
+            let probationary = false;
+            let currentDate = moment(arrayToCalculate[i].start)
+            let startDate = moment(this.props.clicked.hire_date);
+            console.log(startDate);
+            let daysSinceStart = currentDate.diff(startDate, 'days');
+            console.log("daysSinceStart:", daysSinceStart);
+            if (daysSinceStart < 90){
+                probationary = true;
+            }
             let arrayItem = {
                 date: formattedDate,
                 sickAndSafe: 0,
@@ -92,7 +101,13 @@ export class VisualizerList extends PureComponent {
             if (arrayToCalculate[i].payroll_code === 3) {
                 console.log('recording sick time');
                 sickTime -= arrayToCalculate[i].hours;
-                if (sickTime < 0) {
+                if (probationary){
+                    sickTime += arrayToCalculate[i].hours;
+                    charged += arrayToCalculate[i].hours;
+                    arrayItem.sickAndSafe = sickTime;
+                    arrayItem.accrual = towardsAccrual;
+                    arrayItem.chargeable = charged
+                } else if (sickTime < 0) {
                     charged -= sickTime;
                     sickTime = 0;
                     arrayItem.sickAndSafe = sickTime;
@@ -140,48 +155,10 @@ export class VisualizerList extends PureComponent {
 
         let calculatorArray = this.payrollCalculator();
 
-        // payrollCalculator = () => {
-        //     let arrayToCalculate = [this.props.userHistory]
-        //     //this is the array of objects in
-        //     // let calculatorArray = [];
-        //     //this is the array to return
-        //     let sickTime = 0;
-        //     let towardsAccrual = 0;
-        //     let newChargeable = 0;
-        //     //these are reference variables that record what was going on before each entry. I will want the sickTime to preload carryover when i'm at that point.
-
-        //     console.log('in payrollCalculator', arrayToCalculate);
-        //     for (let i = 0; i < arrayToCalculate.length; i++) {
-
-        //         let arrayItem = {
-        //             date: "",
-        //             sickAndSafe: 0,
-        //             accrual: 0,
-        //             chargeable: 0
-        //         }
-        //         //this is the object that needs to be filled in and added to the array that will feed into the 
-        //         if (arrayToCalculate.payroll_code = 1) {
-        //             towardsAccrual += arrayToCalculate[i].hours;
-        //             if (towardsAccrual >= 30) {
-        //                 towardsAccrual = towardsAccrual - 30;
-        //                 sickTime += 1;
-        //                 arrayItem.sickAndSafe = sickTime;
-        //                 arrayItem.accrual = towardsAccrual;
-        //                 arrayItem.chargeable = newChargeable
-        //                 //end of Regular Time Calculation
-        //                 console.log('this.state:', this.state);
-
-        //                 //push the item into the array to be returned 
-        //             }
-        //         }
-        //     }
-        //     return calculatorArray
-        // }
-
 
         return (
             <div>
-                <h3>Available Sick and Safe Time:</h3>
+                <h3>Available Sick and Safe Time: </h3>
                 <AreaChart
                     width={500}
                     height={200}
@@ -197,7 +174,8 @@ export class VisualizerList extends PureComponent {
                     <Tooltip />
                     <Area type="monotone" dataKey="sickAndSafe" stroke="#8884d8" fill="#8884d8" />
                 </AreaChart>
-                <h3>One Hour of Sick and Safe Time is earned for every 30 hours worked in Minneapolis. This shows accumulated hours towards your next accrual.</h3>
+                <h3>Time Towards Accrual:</h3>
+                <p>One Hour of Sick and Safe Time is earned for every 30 hours worked in Minneapolis. This shows accumulated hours towards your next accrual.</p>
                 <AreaChart
                     width={500}
                     height={200}
@@ -213,7 +191,8 @@ export class VisualizerList extends PureComponent {
                     <Tooltip />
                     <Area type="monotone" dataKey="accrual" stroke="#82ca9d" fill="#82ca9d" />
                 </AreaChart>
-                <h3>Unexcused Absences not covered by Sick & Safe are chargeable and may be subject to disciplinary action.</h3>
+            <h3>Unexcused Absences:</h3>
+            <p>Unplanned Absences not covered by Sick & Safe or another policy are chargeable and may be subject to disciplinary action.</p>
                 <AreaChart
                     width={500}
                     height={200}
