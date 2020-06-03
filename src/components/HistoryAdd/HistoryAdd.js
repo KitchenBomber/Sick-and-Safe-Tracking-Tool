@@ -64,19 +64,20 @@ export class HistoryAdd extends Component {
         return (
             <div>
                 <h3>Enter a Single Day</h3>
-                <p>{JSON.stringify(this.props.clicked)}</p>
+                {/* <p>{JSON.stringify(this.props.clicked)}</p> */}
                 <table>
                     <thead>
                         <tr>
-                            <th>Start Time</th>
+                            <th></th>
+                            <th>Date</th>
                             <th>Work Hours</th>
                             <th>Pay Code</th>
                             <th>In Minneapolis</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td><button onClick={this.handleAddOneClick}>Submit</button></td>
                             <td><input type="date" name="start" onChange={this.handleChange}></input></td>
                             <td><input type="number" name="hours" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
                             <td>
@@ -94,7 +95,6 @@ export class HistoryAdd extends Component {
                                     <option value="false">Outside Minneapolis</option>
                                 </select>
                             </td>
-                            <td><button onClick={this.handleAddOneClick}>Submit</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -102,16 +102,17 @@ export class HistoryAdd extends Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>Start Time</th>
+                            <th></th>
+                            <th>Date</th>
                             <th>Work Hours</th>
                             <th>Pay Code</th>
                             <th>In Minneapolis</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {/* day 1 */}
                         <tr>
+                            <td></td>
                             <td><input type="date" name="start1" onChange={this.handleChange}></input></td>
                             <td><input type="number" name="hours1" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
                             <td>
@@ -129,10 +130,11 @@ export class HistoryAdd extends Component {
                                     <option value="false">Outside Minneapolis</option>
                                 </select>
                             </td>
-                            <td></td>
+                            
                         </tr>
                         {/* day 2 */}
                         <tr>
+                            <td></td>
                             <td><input type="date" name="start2" onChange={this.handleChange}></input></td>
                             <td><input type="number" name="hours2" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
                             <td>
@@ -150,10 +152,11 @@ export class HistoryAdd extends Component {
                                     <option value="false">Outside Minneapolis</option>
                                 </select>
                             </td>
-                            <td></td>
+                            
                         </tr>
                         {/* day 3 */}
                         <tr>
+                            <td></td>
                             <td><input type="date" name="start3" onChange={this.handleChange}></input></td>
                             <td><input type="number" name="hours3" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
                             <td>
@@ -171,10 +174,11 @@ export class HistoryAdd extends Component {
                                     <option value="false">Outside Minneapolis</option>
                                 </select>
                             </td>
-                            <td></td>
+                            
                         </tr>
                         {/* day 4 */}
                         <tr>
+                            <td></td>
                             <td><input type="date" name="start4" onChange={this.handleChange}></input></td>
                             <td><input type="number" name="hours4" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
                             <td>
@@ -192,10 +196,11 @@ export class HistoryAdd extends Component {
                                     <option value="false">Outside Minneapolis</option>
                                 </select>
                             </td>                          
-                            <td></td>
+                            
                         </tr>
                         {/* day 5 */}
                         <tr>
+                            <td><button onClick={this.handleAddFiveClick}>Submit</button></td>
                             <td><input type="date" name="start5" onChange={this.handleChange}></input></td>
                             <td><input type="number" name="hours5" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
                             <td>
@@ -213,7 +218,6 @@ export class HistoryAdd extends Component {
                                     <option value="false">Outside Minneapolis</option>
                                 </select>
                             </td>
-                            <td><button onClick={this.handleAddFiveClick}>Submit</button></td>
                         </tr>
                     </tbody>
                 </table>

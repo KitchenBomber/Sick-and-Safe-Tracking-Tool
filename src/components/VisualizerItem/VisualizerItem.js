@@ -5,8 +5,8 @@ export class VisualizerItem extends Component {
     render() {
         return (
             <div>
-                <h3>VisualizerItem</h3>
-                <p>{JSON.stringify(this.props.clicked)}</p>
+                {/* <h3>VisualizerItem</h3>
+                <p>{JSON.stringify(this.props.clicked)}</p> */}
             </div>
         )
     }

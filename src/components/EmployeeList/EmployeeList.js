@@ -9,10 +9,11 @@ export class EmployeeList extends Component {
 
 }
 
+
     render() {
         return (
             <div>
-                <h3>Hello from EmployeeList</h3>
+                <h3>Employee(s) defualt settings:</h3>
                 <p>Current User: {this.props.user.username} </p>
                 {/* <p>User Employees: {JSON.stringify(this.props.employees)}</p> */}
                 <table>

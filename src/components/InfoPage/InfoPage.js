@@ -8,7 +8,10 @@ import React from 'react';
 const InfoPage = () => (
   <div>
     <p>
-      Info Page
+      <h3>Information Page:</h3>
+      <h5>For Supervisors:</h5>
+      <p></p>
+      
     </p>
   </div>
 );

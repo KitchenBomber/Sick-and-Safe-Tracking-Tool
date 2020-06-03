@@ -55,7 +55,7 @@ export class HistoryList extends Component {
                 <div>
                     <h3>Add Employee Time:</h3>
                     <button onClick={this.handleClick}>Go To View Time</button>
-                    <h4>You may add a day or a week but only one at a time</h4>
+                    <h4>You may enter either a day or a week</h4>
                     <HistoryAdd />
 
 

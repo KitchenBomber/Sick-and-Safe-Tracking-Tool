@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 export class EmployeeItem extends Component {
 
 handleClick = () => {
     console.log("in handleClick", this.props.employeeItem.id);
     this.props.dispatch({ type: "RECORD_CLICK", payload: this.props.employeeItem });
-    
-    
 }
+
 
 
     render() {
         return (
             <tr>
                 <td>{this.props.employeeItem.username}</td>
-                <td>{this.props.employeeItem.hire_date}</td>
+                <td>{moment(this.props.employeeItem.hire_date).format('MMM Do YYYY')}</td>
                 <td>{this.props.employeeItem.dflt_hours}</td>
                 <td><p>{this.props.employeeItem.dflt_mpls ? 'MPLS' : 'NON-MPLS'}</p></td>
                 <td>{this.props.employeeItem.dflt_absence}</td>

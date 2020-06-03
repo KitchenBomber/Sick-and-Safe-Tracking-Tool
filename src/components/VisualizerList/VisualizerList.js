@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import {
     AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
 } from 'recharts';
-import VisualizerItem from '../VisualizerItem/VisualizerItem';
-
+// import VisualizerItem from '../VisualizerItem/VisualizerItem';
+import moment from 'moment';
 
 
 
@@ -38,8 +38,9 @@ export class VisualizerList extends PureComponent {
         console.log('in payrollCalculator, arrayToCalculate=', arrayToCalculate);
         //start loop
         for (let i = 0; i < arrayToCalculate.length; i++) {
+            let formattedDate = moment(arrayToCalculate[i].start).format('MMMM Do YYYY')
             let arrayItem = {
-                date: arrayToCalculate[i].start,
+                date: formattedDate,
                 sickAndSafe: 0,
                 accrual: 0,
                 chargeable: 0
@@ -229,12 +230,12 @@ export class VisualizerList extends PureComponent {
                     <Area type="monotone" dataKey="chargeable" stroke="#FF0000" fill="#FF0000" />
                 </AreaChart>
 
-                <h3>In VisualizerList</h3>
+                {/* <h3>In VisualizerList</h3>
                 <p>{JSON.stringify(this.state)}</p>
-                <p>{JSON.stringify(this.props.clicked)}</p>
+                <p>{JSON.stringify(this.props.clicked)}</p> */}
 
                 <button onClick={this.payrollCalculator} >BIG DUMB BUTTON</button>
-                <VisualizerItem />
+                {/* <VisualizerItem /> */}
             </div>
         )
     }

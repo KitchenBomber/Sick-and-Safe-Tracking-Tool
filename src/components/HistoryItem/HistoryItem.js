@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 export class HistoryItem extends Component {
 
@@ -54,13 +55,33 @@ export class HistoryItem extends Component {
         this.props.dispatch({ type: 'EDIT_DAY', payload: this.state})
     }
 
+
+    codeTranslator = () => {
+        let payrollCode = this.props.historyItem.payroll_code;
+        let interpretedCode = "";
+        if (payrollCode === 1){
+            interpretedCode = "Regular"
+        } else if (payrollCode === 2 ){
+            interpretedCode = "Vacation"
+        } else if (payrollCode === 3 ) {
+            interpretedCode = "Sick"
+        } else if (payrollCode === 4 ) {
+            interpretedCode = "FMLA"
+        } else if (payrollCode === 5 ) {
+            interpretedCode = "Unexcused/Non-Sick"
+        }
+        return interpretedCode
+}
+
     render() {
+
+let codeValue = this.codeTranslator();
 
 let viewOrEdit =
     <tr>
-        <td size="12">{this.props.historyItem.start}</td>
+        <td>{moment(this.props.historyItem.start).format('MMM Do YYYY')}</td>
         <td>{this.props.historyItem.hours}</td>
-        <td>{this.props.historyItem.payroll_code}</td>
+        <td>{codeValue}</td>
         <td>{this.props.historyItem.mpls ? 'MPLS' : 'NON-MPLS'}</td>
         <td>
             {this.props.user.access > 4 ? <button onClick={this.handleEditClick}>Edit</button> : ''}
