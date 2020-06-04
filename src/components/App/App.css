@@ -20,24 +20,36 @@ form {
     
 }
 
-input, select {
+input {
     margin: 5px;
     margin-bottom: 10px;
+    
+}
+select {
+    margin: 5px;
+    margin-bottom: 10px;
+    min-height: 22px;
+ 
 }
 
 .log-in, .log-out, .register,
  .graphButton, .historyButton, .viewAddToggle,
  .submitHours, .editButtons {
-  background-color: #00acb0;
+  background-color: #cbdbdb;
   border-radius: 4px;
-  color: #f8f8f8;
-  min-height: 50px;
+  color: black;
+  min-height: 30px;
   min-width: 100px;
   outline:0;
   cursor: pointer;
+  margin: 5px;
 }
-p, h3, h4, h5 {
+p, h1, h3, h4, h5 {
     width: 50%; 
+    margin-left: 75px;
+}
+
+.log-in {
     margin-left: 75px;
 }
 

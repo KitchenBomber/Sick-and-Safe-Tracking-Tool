@@ -8,17 +8,15 @@ import React from 'react';
 const InfoPage = () => (
   <div>
     <h3>Information Page:</h3>
-    <h4>Alert: The accuracy of this application is only as good as the data entered into it. If you find discrepancies consult your source data. Making necessary corrections is easy!</h4>
-
-    <h5>For Employees:</h5>
-    <p>You can log in, in View mode using credentials supplied by your employer. Or you can create your own account and enter time for yourself if you don't think your employer is tracking your time accurately.</p>
-
-    <h5>For Supervisors:</h5>
-    <p>You can use this application to track your employees Sick and Safe time. The login information that you will provide your employees will allow them to view only their own information. They will not be able to alter their records or see other files.
-    </p>
-
-    <h5>For Administrators:</h5>
-    <p>Coming soon! You'll be able to view all employee  and supervisor information, move employees between teams and update end of year carryover hours. These features are currently unavailable.</p>
+    <p>
+      Minneapolis has a Sick & Safe policy that has applied to all hours worked in the city since July 1st of 2017.</p>
+    
+    <p> It is the responsibility of employers to track Sick & Safe time for their employees and to be able to tell an employee how much they have accrued whenever they requests it.</p>
+    
+    <p> This tool helps employers track Sick & Safe time for their employees. It can also be used by employees to make sure their employer is accurately tracking their time.</p>
+    
+    <p>More information about the policy is available from the cities website Here: <a href="//sicktimeinfo.minneapolismn.gov/">http://sicktimeinfo.minneapolismn.gov/</a>
+      </p>
 
   </div>
 );
