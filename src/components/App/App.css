@@ -1,6 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
+    background-image: url("background.png");
 }
 
 .alert {
@@ -9,15 +10,17 @@ body {
 }
 
 form {
-    background-color: #dbd5d5;
+    background-color: aliceblue;
     width: 30%;
     height: 250px;
     margin: 20px auto;
     padding: 25px;
-    border-radius: 2px;
+    border: 1px solid black;
+    box-shadow: 2px 4px 12px #888888;
+    
 }
 
-input {
+input, select {
     margin: 5px;
     margin-bottom: 10px;
 }
@@ -33,12 +36,22 @@ input {
   outline:0;
   cursor: pointer;
 }
+p, h3, h4, h5 {
+    width: 50%; 
+    margin-left: 75px;
+}
+
 
 .log-in:hover, .log-out:hover, 
 .register:hover, .graphButton:hover, 
 .historyButton:hover, .viewAddToggle:hover,
 .submitHours:hover, .editButtons:hover {
   background-color: #008183;
+}
+
+.viewAddToggle {
+    margin-left: 100px;
+    margin-bottom: 25px;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
@@ -62,7 +75,6 @@ input {
      border-collapse: collapse;
      text-align: center;
      background-color: aliceblue;
-     
       box-shadow: 2px 4px 12px #888888;
 }
 
