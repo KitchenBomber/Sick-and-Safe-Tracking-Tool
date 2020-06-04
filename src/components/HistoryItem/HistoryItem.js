@@ -84,10 +84,10 @@ let viewOrEdit =
         <td>{codeValue}</td>
         <td>{this.props.historyItem.mpls ? 'MPLS' : 'NON-MPLS'}</td>
         <td>
-            {this.props.user.access > 4 ? <button onClick={this.handleEditClick}>Edit</button> : ''}
+            {this.props.user.access > 4 ? <button className="editButtons" onClick={this.handleEditClick}>Edit</button> : ''}
         </td>
         <td>
-            {this.props.user.access > 4 ? <button onClick={this.handleDelete}>Delete</button> : ''}
+            {this.props.user.access > 4 ? <button className="editButtons" onClick={this.handleDelete}>Delete</button> : ''}
         </td>
         {/* <p>{JSON.stringify(this.props.clicked)}</p>
                 <p>{JSON.stringify(this.props.userHistory)}</p> */}
@@ -115,8 +115,8 @@ if (this.state.editMode){
                 </select>
             </td>
             {/* <td><input type="boolean" defaultValue={this.props.clicked.dflt_mpls}></input></td> */}
-            <td><button onClick={this.handleSubmitClick}>Submit</button></td>
-            <td><button onClick={this.handleEditClick}>Cancel</button></td>
+            <td><button className="editButtons" onClick={this.handleSubmitClick}>Submit</button></td>
+            <td><button className="editButtons" onClick={this.handleEditClick}>Cancel</button></td>
         </tr>
     <tr><td><p>if date is not changing there is no need to make an entry</p></td></tr>
     </>

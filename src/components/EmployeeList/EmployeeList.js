@@ -14,7 +14,7 @@ export class EmployeeList extends Component {
         return (
             <div>
                 <h3>Employee(s) default settings:</h3>
-                <p>Current User: {this.props.user.username} </p>
+                <h3>Current User: {this.props.user.username} </h3>
                 {/* <p>User Employees: {JSON.stringify(this.props.employees)}</p> */}
                 <table className="defaultsTable">
                     <thead>

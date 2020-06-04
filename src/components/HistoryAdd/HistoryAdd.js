@@ -77,7 +77,7 @@ export class HistoryAdd extends Component {
                     </thead>
                     <tbody>
                         <tr>
-                            <td><button onClick={this.handleAddOneClick}>Submit</button></td>
+                            <td><button className="submitHours" onClick={this.handleAddOneClick}>Submit</button></td>
                             <td><input type="date" name="start" onChange={this.handleChange}></input></td>
                             <td><input type="number" name="hours" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
                             <td>
@@ -200,7 +200,7 @@ export class HistoryAdd extends Component {
                         </tr>
                         {/* day 5 */}
                         <tr>
-                            <td><button onClick={this.handleAddFiveClick}>Submit</button></td>
+                            <td><button className="submitHours" onClick={this.handleAddFiveClick}>Submit</button></td>
                             <td><input type="date" name="start5" onChange={this.handleChange}></input></td>
                             <td><input type="number" name="hours5" defaultValue={this.props.clicked.dflt_hours} onChange={this.handleChange}></input></td>
                             <td>

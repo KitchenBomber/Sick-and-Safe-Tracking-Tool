@@ -26,7 +26,7 @@ export class HistoryList extends Component {
 
         let viewOrAdd = < div >
             <h3>View Employee Time Entries: </h3>
-            <button onClick={this.handleClick}>Go To Add Time</button>
+            <button className="viewAddToggle" onClick={this.handleClick}>Go To Add Time</button>
             <table className="historyTable">
                 <thead>
                     <tr>
@@ -54,7 +54,7 @@ export class HistoryList extends Component {
             viewOrAdd = (
                 <div>
                     <h3>Add Employee Time:</h3>
-                    <button onClick={this.handleClick}>Return To View Time</button>
+                    <button className="viewAddToggle" onClick={this.handleClick}>Return To View Time</button>
                     <h4>You may enter either a day or a week</h4>
                     <HistoryAdd />
 

@@ -158,6 +158,7 @@ export class VisualizerList extends PureComponent {
 
         return (
             <div>
+                <h3>Employee: {this.props.clicked.username}</h3>
                 <h3>Available Sick and Safe Time: </h3>
                 <AreaChart
                     width={1000}
@@ -174,6 +175,7 @@ export class VisualizerList extends PureComponent {
                     <Tooltip />
                     <Area type="monotone" dataKey="sickAndSafe" stroke="#8884d8" fill="#8884d8" />
                 </AreaChart>
+                <hr></hr>
                 <h3>Time Towards Accrual:</h3>
                 <p>One Hour of Sick and Safe Time is earned for every 30 hours worked in Minneapolis. This shows accumulated hours towards your next accrual.</p>
                 <AreaChart
@@ -191,6 +193,7 @@ export class VisualizerList extends PureComponent {
                     <Tooltip />
                     <Area type="monotone" dataKey="accrual" stroke="#82ca9d" fill="#82ca9d" />
                 </AreaChart>
+                <hr></hr>
             <h3>Unexcused Absences:</h3>
             <p>Unplanned Absences not covered by Sick & Safe or another policy are chargeable and may be subject to disciplinary action.</p>
                 <AreaChart
@@ -208,7 +211,7 @@ export class VisualizerList extends PureComponent {
                     <Tooltip />
                     <Area type="monotone" dataKey="chargeable" stroke="#FF0000" fill="#FF0000" />
                 </AreaChart>
-
+                    <hr></hr>
                 {/* <h3>In VisualizerList</h3>
                 <p>{JSON.stringify(this.state)}</p>
                 <p>{JSON.stringify(this.props.clicked)}</p> */}

@@ -22,7 +22,9 @@ input {
     margin-bottom: 10px;
 }
 
-.log-in, .log-out, .register {
+.log-in, .log-out, .register,
+ .graphButton, .historyButton, .viewAddToggle,
+ .submitHours, .editButtons {
   background-color: #00acb0;
   border-radius: 4px;
   color: #f8f8f8;
@@ -32,7 +34,10 @@ input {
   cursor: pointer;
 }
 
-.log-in:hover, .log-out:hover, .register:hover {
+.log-in:hover, .log-out:hover, 
+.register:hover, .graphButton:hover, 
+.historyButton:hover, .viewAddToggle:hover,
+.submitHours:hover, .editButtons:hover {
   background-color: #008183;
 }
 
@@ -57,6 +62,8 @@ input {
      border-collapse: collapse;
      text-align: center;
      background-color: aliceblue;
+     
+      box-shadow: 2px 4px 12px #888888;
 }
 
 .historyTable, tr {
@@ -67,6 +74,7 @@ input {
      border: 1px solid black;
      border-collapse: collapse;
      text-align: center;
+     table-layout: fixed;
      background-color: aliceblue;
 }
 
@@ -79,4 +87,5 @@ input {
      border-collapse: collapse;
      text-align: center;
      background-color: aliceblue;
+
 }
