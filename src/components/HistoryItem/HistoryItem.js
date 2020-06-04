@@ -118,7 +118,7 @@ if (this.state.editMode){
             <td><button className="editButtons" onClick={this.handleSubmitClick}>Submit</button></td>
             <td><button className="editButtons" onClick={this.handleEditClick}>Cancel</button></td>
         </tr>
-    <tr><td><p>if date is not changing there is no need to make an entry</p></td></tr>
+    <tr><td><p>no need for entry if date unchanged</p></td></tr>
     </>
 }
 

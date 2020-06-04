@@ -2,6 +2,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
     background-image: url("background.png");
+    max-width: 1500px;
 }
 
 .alert {
@@ -44,7 +45,7 @@ select {
   cursor: pointer;
   margin: 5px;
 }
-p, h1, h3, h4, h5 {
+.blockText, h1, h3, h4, h5 {
     width: 50%; 
     margin-left: 75px;
 }
@@ -58,7 +59,9 @@ p, h1, h3, h4, h5 {
 .register:hover, .graphButton:hover, 
 .historyButton:hover, .viewAddToggle:hover,
 .submitHours:hover, .editButtons:hover {
-  background-color: #008183;
+  background-color: #5D6D7E;
+  color:  #f2f2f2;
+
 }
 
 .viewAddToggle {

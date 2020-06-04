@@ -11,7 +11,7 @@ const UserPage = (props) => (
     <h1 id="welcome">
       Welcome, { props.user.username }!
     </h1>
-    <p>Your ID is: {props.user.id}</p>
+    <p className="blockText">Your ID is: {props.user.id}</p>
     <LogOutButton className="log-in" />
     {/* {JSON.stringify(props.user)} */}
   </div>
