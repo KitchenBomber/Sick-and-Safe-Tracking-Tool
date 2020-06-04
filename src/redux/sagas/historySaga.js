@@ -58,11 +58,24 @@ function* sendDay(action){
     }
 }
 
+function* sendWeek(action){
+    console.log("in addWeek", action.payload);
+    try {
+        yield axios.post('/api/history2', action.payload);
+        yield put({ type: 'FETCH_HOURS', payload: action.payload });
+    }catch (error) {
+        console.log('add day failed', error);
+
+    }
+    
+}
+
 function* historySaga() {
     yield takeLatest('FETCH_HOURS', fetchHours);
     yield takeEvery('ADD_DAY', sendDay);
     yield takeEvery('DELETE', removeDay);
-    yield takeEvery('EDIT_DAY', editDay)
+    yield takeEvery('EDIT_DAY', editDay);
+    yield takeEvery('ADD_WEEK', sendWeek)
 }
 
 export default historySaga;
