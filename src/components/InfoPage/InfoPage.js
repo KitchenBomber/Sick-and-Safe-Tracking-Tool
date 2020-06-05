@@ -9,8 +9,7 @@ const InfoPage = () => (
   <div>
     <h3>Information Page:</h3>
 
-    <h5 style={{ color: "#CB4335" }}>ATTENTION: The accuracy of the data provided by this application is limited by the accuracy of the data put into it. If you find discrepancies examine your source data for accuracy.</h5>
-    <h5 style={{ color: "#CB4335" }}>Making corrections is easy!!</h5>
+    <h5 style={{ color: "#CB4335" }}>ATTENTION: This application can only be as accurate as the data provided to it. If you find discrepancies examine your source data for. Making corrections is easy!!</h5>
 
     <h5>For Employees:</h5>
     <p className="blockText">You can use this application in two ways. You can log in and view your data using credentials supplied by your employer. Or you can create your own account to enter time for yourself.</p>
