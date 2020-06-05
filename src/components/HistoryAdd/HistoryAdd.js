@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import swal from 'sweetalert';
 
 export class HistoryAdd extends Component {
 
@@ -51,13 +52,22 @@ export class HistoryAdd extends Component {
     handleAddOneClick = () => {
         console.log(this.state);
         this.props.dispatch({ type: 'ADD_DAY', payload: this.state });
+        swal({
+            title: "1 Day Added",
+            icon: "success",
+            timer: 800
+        });
 
     }
 
     handleAddFiveClick = () => {
         console.log(this.state);
         this.props.dispatch({ type: 'ADD_WEEK', payload: this.state });
-
+        swal({
+            title: "5 Days Added",
+            icon: "success",
+            timer: 800
+        });
     }
 
     render() {

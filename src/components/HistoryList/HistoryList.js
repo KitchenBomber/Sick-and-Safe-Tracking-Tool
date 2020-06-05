@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import HistoryItem from '../HistoryItem/HistoryItem';
 import HistoryAdd from '../HistoryAdd/HistoryAdd';
+import swal from 'sweetalert';
 
 export class HistoryList extends Component {
     componentDidMount() {
@@ -18,7 +19,12 @@ export class HistoryList extends Component {
             add: !this.state.add
         })
     } else {
-        alert("you are not authorized to add time");
+            swal({
+                title: "Denied",
+                text: "This function is reserved for Supervisors and Administrators",
+                icon: "warning",
+                timer: 2000
+            });
      }
     }//This handleClick flips this screen between View and Add mode
 
@@ -43,6 +49,7 @@ export class HistoryList extends Component {
                         <HistoryItem key={historyItem.id} historyItem={historyItem} />)}
                 </tbody>
             </table>
+            <button className="viewAddToggle" onClick={this.handleClick}>Go To Add Time</button>
             {/* <p>{JSON.stringify(this.props.userHistory)}</p> */}
 
 
