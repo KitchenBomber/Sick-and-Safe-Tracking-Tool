@@ -20,7 +20,7 @@ handleClick = () => {
                 <td>{this.props.employeeItem.dflt_hours}</td>
                 <td><p>{this.props.employeeItem.dflt_mpls ? 'MPLS' : 'NON-MPLS'}</p></td>
                 <td>{this.props.employeeItem.dflt_absence}</td>
-                <td><Link to="/history" onClick={this.handleClick}> <button className="historyButton">History</button></Link></td>
+                <td><Link to="/history" onClick={this.handleClick}> <button className="historyButton">View/Enter Hours</button></Link></td>
                 <td><Link to="/visualizer" onClick={this.handleClick}><button className="graphButton">Visualize</button></Link></td>
             </tr>
         )
