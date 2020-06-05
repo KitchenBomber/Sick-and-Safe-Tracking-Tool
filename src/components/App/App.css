@@ -116,3 +116,8 @@ select {
      background-color: aliceblue;
 
 }
+
+.lineBreak {
+    margin-left: 50px;
+    max-width: 925px;
+}
