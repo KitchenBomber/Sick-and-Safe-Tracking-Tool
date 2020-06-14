@@ -10,10 +10,10 @@ Team Display:
 ![ImageOne](./documentation/images/Employees.png)
 
 Edit or Delete:
-![ImageTwo](./documentation/images/EnterTime.png)
+![ImageTwo](./documentation/images/TimeEntries.png)
 
 Add Hours:
-![ImageThree](./documentation/images/TimeEntries.png)
+![ImageThree](./documentation/images/EnterTime.png)
 
 Review the data in graph form:
 ![ImageFour](./documentation/images/Graphs.png)
