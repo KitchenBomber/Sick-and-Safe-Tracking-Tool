@@ -7,16 +7,16 @@ The city didn't create any tool for tracking Sick and Safe time beyond a simple 
 In the deployed version a user can create a supervisor profile, enter time for that supervisor, Edit or Delete those entires and see a graph showing current status. Functions to set carryover from the previous year, edit start dates and assign employees to the supervisor are currently all done directly in the SQL database.
 
 Team Display:
-![ImageOne](../documentation/images/Employees.png)
+![ImageOne](./documentation/images/Employees.png)
 
 Edit or Delete:
-![ImageTwo](../documentation/images/EnterTime.png)
+![ImageTwo](./documentation/images/EnterTime.png)
 
 Add Hours:
-![ImageThree](../documentation/images/TimeEntries.png)
+![ImageThree](./documentation/images/TimeEntries.png)
 
 Review the data in graph form:
-![ImageFour](../documentation/images/Graphs.png)
+![ImageFour](./documentation/images/Graphs.png)
 
 This Project was my solo capstone-project at Prime Digital Academy.
 It uses React, Redux, Express, Passport, and PostgreSQL, reChart (a full list of dependencies can be found in `package.json`).
